@@ -3,7 +3,7 @@
  * Animated Lovelace card for bin collection days
  * https://github.com/skyrotter/ha-poubelle-card — MIT License
  */
-const PB_VERSION = '1.1.0';
+const PB_VERSION = '1.2.0';
 
 const PB_IMG = {
   grise: { lid: 'data:image/webp;base64,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', body: 'data:image/webp;base64,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' },
@@ -66,7 +66,7 @@ const PB_I18N = {
     today: 'Collecte', today_txt: "Collecte aujourd'hui 🚛",
     eve: 'Ce soir', eve_txt: 'À sortir ce soir ! 🌙',
     in_days: n => `Dans ${n} j`, next_day: d => `Collecte ${d}`, next_date: d => `Collecte le ${d}`,
-    fill: 'Remplissage', unknown: 'Date inconnue',
+    fill: 'Remplissage', unknown: 'Date inconnue', shifted: 'décalée (jour férié)',
   },
   en: {
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -76,7 +76,7 @@ const PB_I18N = {
     today: 'Pickup', today_txt: 'Pickup today 🚛',
     eve: 'Tonight', eve_txt: 'Put it out tonight! 🌙',
     in_days: n => `In ${n} d`, next_day: d => `Pickup on ${d}`, next_date: d => `Pickup on ${d}`,
-    fill: 'Fill level', unknown: 'Unknown date',
+    fill: 'Fill level', unknown: 'Unknown date', shifted: 'moved (public holiday)',
   },
 };
 
@@ -91,6 +91,20 @@ const pbIsoWeek = d => { const t = new Date(Date.UTC(d.getFullYear(), d.getMonth
   const day = t.getUTCDay() || 7; t.setUTCDate(t.getUTCDate() + 4 - day);
   const y0 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1)); return Math.ceil(((t - y0) / 86400000 + 1) / 7); };
 /* weeks: paires/even → 0, impaires/odd → 1, sinon toutes les semaines */
+/* jours fériés français (métropole ; + Vendredi saint et 26/12 en Alsace-Moselle) */
+const pbEaster = y => { const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4,
+  f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30,
+  i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451),
+  mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1; return new Date(y, mo - 1, da); };
+const pbKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const PB_HOL_CACHE = {};
+const pbHolidays = (y, alsace) => {
+  const ck = y + (alsace ? 'a' : ''); if (PB_HOL_CACHE[ck]) return PB_HOL_CACHE[ck];
+  const e = pbEaster(y), off = n => { const d = new Date(e); d.setDate(d.getDate() + n); return pbKey(d); };
+  const set = new Set([`${y}-01-01`, off(1), `${y}-05-01`, `${y}-05-08`, off(39), off(50), `${y}-07-14`, `${y}-08-15`, `${y}-11-01`, `${y}-11-11`, `${y}-12-25`]);
+  if (alsace) { set.add(off(-2)); set.add(`${y}-12-26`); }
+  return (PB_HOL_CACHE[ck] = set);
+};
 const pbWeeks = w => { const v = String(w ?? '').toLowerCase();
   return ['paire', 'paires', 'even', 'pair'].includes(v) ? 0 : ['impaire', 'impaires', 'odd', 'impair'].includes(v) ? 1 : null; };
 
@@ -111,6 +125,13 @@ class PoubelleCard extends HTMLElement {
           { value: 'toutes', label: 'Toutes les semaines / Every week' },
           { value: 'paires', label: 'Semaines paires / Even weeks' },
           { value: 'impaires', label: 'Semaines impaires / Odd weeks' }] } } },
+        { name: 'holidays', selector: { select: { mode: 'dropdown', options: [
+          { value: 'aucun', label: 'Jours fériés ignorés / Ignore holidays' },
+          { value: 'report', label: 'Reportée au lendemain / Moved to next day' },
+          { value: 'decalage', label: 'Décalage d\'un jour jusqu\'à la fin de la semaine / Rest of week +1 day' },
+          { value: 'annule', label: 'Annulée / Cancelled' }] } } },
+        { name: 'region', selector: { select: { mode: 'dropdown', options: [
+          { value: 'metropole', label: 'France métropolitaine' }, { value: 'alsace-moselle', label: 'Alsace-Moselle' }] } } },
         { type: 'grid', name: '', schema: [
           { name: 'hour', selector: { number: { min: 0, max: 23.5, step: 0.5, mode: 'box' } } },
           { name: 'interval', selector: { number: { min: 1, max: 60, mode: 'box' } } },
@@ -128,7 +149,7 @@ class PoubelleCard extends HTMLElement {
       ],
       computeLabel: s => ({
         bin: 'Couleur / Bin', name: 'Nom / Name', entity: 'Entité (optionnel) / Entity (optional)',
-        days: 'Jours de collecte / Pickup days', weeks: 'Semaines / Weeks', hour: 'Heure de passage / Pickup hour',
+        days: 'Jours de collecte / Pickup days', weeks: 'Semaines / Weeks', holidays: 'Jours fériés / Public holidays', region: 'Calendrier des fériés / Holiday calendar', hour: 'Heure de passage / Pickup hour',
         interval: 'Jours entre 2 collectes / Days between pickups', scale: 'Taille / Size',
         headroom: 'Marge haute / Headroom', compact: 'Compact', show_meter: 'Jauge / Meter',
         show_status: 'Texte de statut / Status text', theme_background: 'Fond du thème HA / HA theme background',
@@ -280,24 +301,43 @@ class PoubelleCard extends HTMLElement {
       if (n >= I) return { state: 'videe', n, fill: 0 };
       return { state: n === 1 ? 'veille' : '', n, fill: Math.min(1, Math.max(0, 1 - n / I)), date: d };
     }
-    // jours fixes (+ filtre semaines paires / impaires) : prochaine et dernière collecte
+    // jours fixes (+ semaines paires / impaires, + jours fériés) : prochaine et dernière collecte
     const W = pbWeeks(c.weeks), today = pbMidnight(now);
     const at = k => { const d = new Date(today); d.setDate(d.getDate() + k); return d; };
-    const ok = d => this._days.includes((d.getDay() + 6) % 7) && (W === null || pbIsoWeek(d) % 2 === W);
-    let n = null, l = null;
-    for (let k = 0; k <= 21 && n === null; k++) if (ok(at(k)) && !(k === 0 && h >= H)) n = k;
-    for (let k = 0; k <= 21 && l === null; k++) if (ok(at(-k)) && !(k === 0 && h < H)) l = k;
-    if (n === null || l === null) return { state: 'inconnu', n: null, fill: 0 };
+    const plan = d => this._days.includes((d.getDay() + 6) % 7) && (W === null || pbIsoWeek(d) % 2 === W);
+    const mode = String(c.holidays || 'aucun').toLowerCase(), alsace = /alsace|moselle/i.test(String(c.region || ''));
+    const extra = new Set((c.holiday_dates || []).map(String));
+    const hol = d => pbHolidays(d.getFullYear(), alsace).has(pbKey(d)) || extra.has(pbKey(d));
+    // date réelle d'une collecte prévue le jour d (null = annulée)
+    const eff = d => {
+      if (['report', 'reportee', 'reportée', 'next_day', 'shift'].includes(mode)) {
+        const x = new Date(d); let guard = 0; while ((hol(x) || x.getDay() === 0) && guard++ < 7) x.setDate(x.getDate() + 1); return x;
+      }
+      if (['decalage', 'décalage', 'week', 'semaine'].includes(mode)) {
+        const mon = new Date(d); mon.setDate(mon.getDate() - ((d.getDay() + 6) % 7));
+        for (const x = new Date(mon); x <= d; x.setDate(x.getDate() + 1)) if (x.getDay() !== 0 && hol(x)) { const y = new Date(d); y.setDate(y.getDate() + 1); return y; }
+        return d;
+      }
+      if (['annule', 'annulée', 'annulee', 'skip', 'cancel'].includes(mode)) return hol(d) ? null : d;
+      return d;
+    };
+    const list = [];
+    for (let k = -35; k <= 35; k++) { const d = at(k); if (!plan(d)) continue; const e = eff(d); if (!e) continue;
+      list.push({ k: Math.round((pbMidnight(e) - today) / 86400000), moved: pbKey(e) !== pbKey(d) }); }
+    const next = list.filter(x => x.k > 0 || (x.k === 0 && h < H)).sort((a, b) => a.k - b.k)[0];
+    const last = list.filter(x => x.k < 0 || (x.k === 0 && h >= H)).sort((a, b) => b.k - a.k)[0];
+    if (!next || !last) return { state: 'inconnu', n: null, fill: 0 };
+    const n = next.k, l = -last.k, moved = next.moved;
     const fill = (l + n) ? l / (l + n) : 0;
     if (l === 0) return { state: 'videe', n, fill: 0 };
-    if (n === 0) return { state: 'jour', n, fill: 1 };
-    return { state: n === 1 ? 'veille' : '', n, fill };
+    if (n === 0) return { state: 'jour', n, fill: 1, moved };
+    return { state: n === 1 ? 'veille' : '', n, fill, moved };
   }
 
   _render() {
     const r = this.shadowRoot; if (!r || !this._c) return;
     const q = x => r.querySelector(x), T = this._t_(), now = new Date(), wd = (now.getDay() + 6) % 7;
-    const { state, n, fill } = this._compute();
+    const { state, n, fill, moved } = this._compute();
     let pill, text;
     if (state === 'inconnu') { pill = '—'; text = T.unknown; }
     else if (state === 'videe') { pill = T.emptied; text = T.emptied_txt; }
@@ -313,7 +353,7 @@ class PoubelleCard extends HTMLElement {
     q('ha-card').className = 'card ' + cls + (fill >= 0.6 && state !== 'videe' ? ' plein' : '') + (this._c.entity ? ' clickable' : '');
     q('.name').textContent = this._c.name || T.bin[this._bin];
     const p = q('.pill'); p.className = 'pill ' + cls; p.textContent = pill;
-    q('.status').textContent = text;
+    q('.status').textContent = moved && state !== 'videe' ? `${text} · ${T.shifted}` : text;
     q('.ml').textContent = T.fill;
     const f = state === 'videe' ? 0 : (state === 'jour' ? 1 : fill), pct = Math.round(f * 100);
     q('.pct').textContent = pct + ' %'; q('.bar i').style.width = pct + '%';

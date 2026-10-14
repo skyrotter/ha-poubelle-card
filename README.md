@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.1.0-blue)
+![version](https://img.shields.io/badge/version-1.2.0-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -54,6 +54,16 @@ days: [mardi]
 weeks: paires      # semaines ISO paires ; la grise : weeks: impaires
 ```
 
+### Jours fériés
+Chaque commune a sa règle : vérifie le calendrier de collecte de ta mairie / métropole.
+```yaml
+type: custom:poubelle-card
+bin: grise
+days: [lundi, jeudi]
+holidays: decalage    # report | decalage | annule
+```
+Quand une collecte est déplacée, la carte l'indique : « Collecte mardi · décalée (jour férié) ».
+
 ### Avec une entité
 ```yaml
 type: custom:poubelle-card
@@ -93,6 +103,9 @@ cards:
 | `name` | texte | selon la couleur | Titre de la carte |
 | `days` | liste | — | Jours de collecte : nombres (0 = lundi) ou noms (`mardi`, `tuesday`…). Obligatoire sans `entity` |
 | `weeks` | texte | toutes | `paires` / `impaires` (`even` / `odd`) : collecte une semaine sur deux, selon le numéro de semaine ISO |
+| `holidays` | texte | `aucun` | Jours fériés français : `report` (collecte reportée au lendemain), `decalage` (à partir du férié, toutes les collectes de la semaine décalées d'un jour), `annule` (pas de collecte) |
+| `region` | texte | `metropole` | `alsace-moselle` ajoute le Vendredi saint et le 26 décembre |
+| `holiday_dates` | liste | — | Dates supplémentaires traitées comme fériées, ex. `["2026-12-24"]` |
 | `entity` | entité | — | Source de la prochaine collecte (voir ci-dessous). Clic = fenêtre d'info |
 | `hour` | nombre | `9` | Heure de passage (décimales acceptées : `6.5` = 6 h 30) |
 | `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement) |
@@ -130,6 +143,7 @@ bin: yellow          # grey, black, yellow, green, blue, brown, red
 days: [tuesday]      # or [1] — 0 = Monday
 hour: 9              # truck pickup hour
 # weeks: even        # every other week: even / odd ISO weeks
+# holidays: report    # French public holidays: report | decalage | annule
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
 ```
