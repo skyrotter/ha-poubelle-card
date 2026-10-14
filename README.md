@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.0.0-blue)
+![version](https://img.shields.io/badge/version-1.1.0-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -46,6 +46,14 @@ days: [mardi, vendredi]   # ou [1, 4] (0 = lundi … 6 = dimanche)
 hour: 9                   # heure de passage du camion
 ```
 
+### Une semaine sur deux (semaines paires / impaires)
+```yaml
+type: custom:poubelle-card
+bin: jaune
+days: [mardi]
+weeks: paires      # semaines ISO paires ; la grise : weeks: impaires
+```
+
 ### Avec une entité
 ```yaml
 type: custom:poubelle-card
@@ -84,6 +92,7 @@ cards:
 | `bin` | texte | **obligatoire** | `grise`, `noire`, `jaune`, `verte`, `bleue`, `marron`, `rouge` (noms anglais acceptés) |
 | `name` | texte | selon la couleur | Titre de la carte |
 | `days` | liste | — | Jours de collecte : nombres (0 = lundi) ou noms (`mardi`, `tuesday`…). Obligatoire sans `entity` |
+| `weeks` | texte | toutes | `paires` / `impaires` (`even` / `odd`) : collecte une semaine sur deux, selon le numéro de semaine ISO |
 | `entity` | entité | — | Source de la prochaine collecte (voir ci-dessous). Clic = fenêtre d'info |
 | `hour` | nombre | `9` | Heure de passage (décimales acceptées : `6.5` = 6 h 30) |
 | `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement) |
@@ -120,6 +129,7 @@ type: custom:poubelle-card
 bin: yellow          # grey, black, yellow, green, blue, brown, red
 days: [tuesday]      # or [1] — 0 = Monday
 hour: 9              # truck pickup hour
+# weeks: even        # every other week: even / odd ISO weeks
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
 ```
