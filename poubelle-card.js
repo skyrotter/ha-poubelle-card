@@ -265,11 +265,12 @@ class PoubelleCard extends HTMLElement {
      <div class="scaler"><div class="stage-wrap"><div class="stage">
       <div class="fx">${PB_FX_FLY}${PB_FX_STINK}</div>${PB_FX_SPARK}<div class="shadow"></div>
       <div class="bin">${this._isSac ? `<svg class="sac-svg" viewBox="0 0 150 253" xmlns="http://www.w3.org/2000/svg">
-       <g class="sac-body-wrap"><path d="M35 245 C33 252 117 252 115 245 L122 125 Q124 95 75 90 Q26 95 28 125 Z" fill="${color}" stroke="rgba(0,0,0,.12)" stroke-width="1"/>
-       <path d="M50 170 Q67 165 84 172" stroke="rgba(0,0,0,.1)" stroke-width="1.5" fill="none"/><path d="M46 200 Q70 193 94 202" stroke="rgba(0,0,0,.1)" stroke-width="1.5" fill="none"/><path d="M54 140 Q67 135 80 141" stroke="rgba(0,0,0,.08)" stroke-width="1.5" fill="none"/>
-       <ellipse cx="55" cy="165" rx="10" ry="30" fill="rgba(255,255,255,.07)" transform="rotate(-8 55 165)"/>
-       <path d="M55 95 Q60 85 67 88 L83 88 Q90 85 95 95" fill="${color}"/>
-       <g class="sac-knot" opacity="0"><ellipse cx="75" cy="78" rx="13" ry="7" fill="${color}"/><path d="M63 76 Q52 58 67 63" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M87 76 Q98 58 83 63" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="75" cy="78" rx="13" ry="7" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1"/></g>
+       <g class="sac-body-wrap"><path d="M30 248 C28 253 122 253 120 248 L128 130 Q130 95 75 88 Q20 95 22 130 Z" fill="${color}" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+       <path d="M55 130 Q54 180 56 245" stroke="rgba(255,255,255,.04)" stroke-width="2" fill="none"/><path d="M95 130 Q96 185 94 245" stroke="rgba(255,255,255,.04)" stroke-width="2" fill="none"/>
+       <path d="M40 160 Q60 154 80 160 Q100 166 115 158" stroke="rgba(255,255,255,.05)" stroke-width="1.5" fill="none"/><path d="M38 195 Q58 188 78 195 Q98 202 118 193" stroke="rgba(255,255,255,.05)" stroke-width="1.5" fill="none"/><path d="M42 225 Q62 219 82 226 Q100 232 116 224" stroke="rgba(255,255,255,.04)" stroke-width="1.5" fill="none"/>
+       <ellipse cx="52" cy="175" rx="12" ry="35" fill="rgba(255,255,255,.06)" transform="rotate(-6 52 175)"/><ellipse cx="98" cy="190" rx="8" ry="25" fill="rgba(255,255,255,.03)" transform="rotate(5 98 190)"/>
+       <path d="M48 93 Q55 86 63 89 L87 89 Q95 86 102 93" fill="${color}"/><path d="M48 93 Q55 86 63 89 L87 89 Q95 86 102 93" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+       <g class="sac-knot" opacity="0"><ellipse cx="75" cy="80" rx="14" ry="6" fill="${color}"/><ellipse cx="75" cy="80" rx="14" ry="6" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="0.5"/><path d="M62 78 Q48 55 58 52 Q64 50 66 58 L68 75" stroke="#e8503a" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/><path d="M62 78 Q48 55 58 52 Q64 50 66 58 L68 75" stroke="#ff7b6a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><path d="M88 78 Q102 55 92 52 Q86 50 84 58 L82 75" stroke="#e8503a" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/><path d="M88 78 Q102 55 92 52 Q86 50 84 58 L82 75" stroke="#ff7b6a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/><ellipse cx="75" cy="76" rx="8" ry="5" fill="#d4443a"/><ellipse cx="75" cy="75" rx="5" ry="3" fill="#e8605a" opacity=".6"/></g>
        </g></svg>`
       : `<div class="trash">${content}</div>
        <img class="body" src="${PB_IMG[B.img].body}" alt=""><img class="lid" src="${PB_IMG[B.img].lid}" alt="">`}</div>
