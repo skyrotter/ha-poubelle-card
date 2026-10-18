@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.2.0-blue)
+![version](https://img.shields.io/badge/version-1.3.0-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -54,6 +54,19 @@ days: [mardi]
 weeks: paires      # semaines ISO paires ; la grise : weeks: impaires
 ```
 
+### Une fois par mois
+```yaml
+type: custom:poubelle-card
+bin: bleue
+days: [mardi]
+month_week: 1        # 1er mardi du mois (2, 3, 4 ou last = dernier)
+```
+```yaml
+type: custom:poubelle-card
+bin: verte
+month_day: 15        # le 15 de chaque mois
+```
+
 ### Jours fériés
 Chaque commune a sa règle : vérifie le calendrier de collecte de ta mairie / métropole.
 ```yaml
@@ -103,6 +116,8 @@ cards:
 | `name` | texte | selon la couleur | Titre de la carte |
 | `days` | liste | — | Jours de collecte : nombres (0 = lundi) ou noms (`mardi`, `tuesday`…). Obligatoire sans `entity` |
 | `weeks` | texte | toutes | `paires` / `impaires` (`even` / `odd`) : collecte une semaine sur deux, selon le numéro de semaine ISO |
+| `month_week` | texte | — | Une fois par mois : `1`, `2`, `3`, `4` ou `last` (dernier) jour indiqué dans `days` du mois, ex. 1er mardi |
+| `month_day` | nombre | — | Une fois par mois à date fixe (1–31 ; 31 = dernier jour du mois). Remplace `days` |
 | `holidays` | texte | `aucun` | Jours fériés français : `report` (collecte reportée au lendemain), `decalage` (à partir du férié, toutes les collectes de la semaine décalées d'un jour), `annule` (pas de collecte) |
 | `region` | texte | `metropole` | `alsace-moselle` ajoute le Vendredi saint et le 26 décembre |
 | `holiday_dates` | liste | — | Dates supplémentaires traitées comme fériées, ex. `["2026-12-24"]` |
@@ -144,6 +159,8 @@ days: [tuesday]      # or [1] — 0 = Monday
 hour: 9              # truck pickup hour
 # weeks: even        # every other week: even / odd ISO weeks
 # holidays: report    # French public holidays: report | decalage | annule
+# month_week: 1       # once a month: 1st..4th or last given weekday
+# month_day: 15       # once a month on a fixed date
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
 ```
