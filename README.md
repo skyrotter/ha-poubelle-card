@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.3.0-blue)
+![version](https://img.shields.io/badge/version-1.4.0-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -18,7 +18,9 @@ Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des j
 | **Collecte** | jour J, avant l'heure de passage | la poubelle sautille |
 | **Vidée** | jour J, après l'heure de passage | étincelles ✨, bordure verte |
 
-- 7 couleurs : `grise`, `noire`, `jaune`, `verte`, `bleue`, `marron`, `rouge`
+- 7 couleurs : `grise`, `noire`, `jaune`, `verte`, `bleue`, `marron` (ou `brune`), `rouge`
+- **Bac entièrement coloré** (`full_color: true`) ou couvercle seul
+- **Sac poubelle** (`container: sac`) pour les communes sans conteneurs
 - Contenu adapté : sacs d'ordures, emballages, verre, papier, biodéchets
 - Deux sources : **jours fixes** (YAML) ou **entité** (capteur date, nombre de jours, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule))
 - Français / anglais automatique (langue du profil HA)
@@ -45,6 +47,26 @@ name: Poubelle noire
 days: [mardi, vendredi]   # ou [1, 4] (0 = lundi … 6 = dimanche)
 hour: 9                   # heure de passage du camion
 ```
+
+### Bac entièrement coloré
+Par défaut, seul le couvercle porte la couleur. Avec `full_color`, tout le bac est coloré (la roue reste noire) : plus lisible quand plusieurs poubelles sont côte à côte.
+```yaml
+type: custom:poubelle-card
+bin: bleue          # ou verte, brune, jaune, rouge
+days: [mardi]
+full_color: true
+```
+![Bacs entièrement colorés](preview-full-color.png)
+
+### Sac poubelle (communes sans conteneurs)
+Un sac noué remplace le conteneur. Il est à plat en début de cycle et se gonfle jusqu'au jour de collecte. Le sac jaune est translucide, comme les sacs de tri.
+```yaml
+type: custom:poubelle-card
+bin: jaune          # noire, grise, jaune, verte, bleue, marron, rouge
+container: sac
+days: [jeudi]
+```
+![Sacs poubelles](preview-sacs.png)
 
 ### Une semaine sur deux (semaines paires / impaires)
 ```yaml
@@ -126,6 +148,9 @@ cards:
 | `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement) |
 | `content` | texte | selon la couleur | `ordures`, `recyclables`, `verre`, `papier`, `biodechets` |
 | `color` | couleur CSS | selon la couleur | Couleur de la jauge |
+| `full_color` | booléen | `false` | Colore tout le bac et pas seulement le couvercle |
+| `body_color` | couleur CSS | selon la couleur | Couleur du bac avec `full_color` |
+| `container` | `bac`/`sac` | `bac` | `sac` : sac poubelle au lieu du conteneur (`bag` accepté) |
 | `lid_filter` / `body_filter` | filtre CSS | — | Teinte personnalisée, ex. `hue-rotate(90deg)` |
 | `scale` | nombre | `0.62` | Taille de la poubelle |
 | `headroom` | px | `70` | Espace au-dessus (pour le couvercle ouvert) |
@@ -163,6 +188,8 @@ hour: 9              # truck pickup hour
 # month_day: 15       # once a month on a fixed date
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
+# full_color: true    # paint the whole bin, not just the lid
+# container: bag      # rubbish bag instead of a wheelie bin
 ```
 
 All options are listed in the table above (`language: en` forces English; otherwise it follows your HA profile language).
