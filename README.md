@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.4.0-blue)
+![version](https://img.shields.io/badge/version-1.5.0-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -108,6 +108,16 @@ interval: 14                    # jours entre deux collectes (calcul du rempliss
 hour: 6
 ```
 
+### Avec un calendrier
+Un seul calendrier pour toutes les poubelles ? `calendar_filter` ne garde que les événements dont le titre contient ce texte (sans tenir compte des majuscules). Le remplissage se cale alors sur la collecte précédente réelle : `interval` devient inutile.
+```yaml
+type: custom:poubelle-card
+bin: jaune
+entity: calendar.collectes
+calendar_filter: Tri            # ou une liste : [Tri, Emballages]
+hour: 6
+```
+
 ### Deux cartes côte à côte (vue sections)
 ```yaml
 type: grid
@@ -145,7 +155,8 @@ cards:
 | `holiday_dates` | liste | — | Dates supplémentaires traitées comme fériées, ex. `["2026-12-24"]` |
 | `entity` | entité | — | Source de la prochaine collecte (voir ci-dessous). Clic = fenêtre d'info |
 | `hour` | nombre | `9` | Heure de passage (décimales acceptées : `6.5` = 6 h 30) |
-| `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement) |
+| `calendar_filter` | texte / liste | — | Avec un `calendar.*` : ne garde que les événements dont le titre contient ce texte |
+| `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement ; inutile avec un calendrier) |
 | `content` | texte | selon la couleur | `ordures`, `recyclables`, `verre`, `papier`, `biodechets` |
 | `color` | couleur CSS | selon la couleur | Couleur de la jauge |
 | `full_color` | booléen | `false` | Colore tout le bac et pas seulement le couvercle |
@@ -163,7 +174,7 @@ cards:
 ### Entités prises en charge
 - **Waste Collection Schedule** : attribut `daysTo`
 - `sensor` dont l'état est une **date** (`2026-10-20`), un **horodatage**, un **nombre de jours** (`3`) ou `today`/`tomorrow`/`aujourd'hui`/`demain`
-- `calendar.*` : attribut `start_time` du prochain événement
+- `calendar.*` : événements des 60 derniers et 60 prochains jours, filtrables par titre (`calendar_filter`)
 - `input_datetime` (avec date)
 
 ### Personnaliser via card-mod / thème
@@ -188,6 +199,7 @@ hour: 9              # truck pickup hour
 # month_day: 15       # once a month on a fixed date
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
+# calendar_filter: Recycling   # with a calendar.* entity: only events whose title contains this text
 # full_color: true    # paint the whole bin, not just the lid
 # container: bag      # rubbish bag instead of a wheelie bin
 ```
