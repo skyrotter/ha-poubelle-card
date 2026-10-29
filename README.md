@@ -1,7 +1,7 @@
 # 🗑️ Poubelle Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.5.2-blue)
+![version](https://img.shields.io/badge/version-1.5.3-blue)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 *Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
@@ -123,6 +123,7 @@ entity: calendar.collectes
 calendar_filter: Tri            # ou une liste : [Tri, Emballages]
 hour: 6
 ```
+L'événement est la veille de la collecte (« Sortir les poubelles ») ? Ajoute `calendar_offset: 1`.
 
 ### Deux cartes côte à côte (vue sections)
 ```yaml
@@ -162,6 +163,7 @@ cards:
 | `entity` | entité | — | Source de la prochaine collecte (voir ci-dessous). Clic = fenêtre d'info |
 | `hour` | nombre | `9` | Heure de passage (décimales acceptées : `6.5` = 6 h 30) |
 | `calendar_filter` | texte / liste | — | Avec un `calendar.*` : ne garde que les événements dont le titre contient ce texte |
+| `calendar_offset` | nombre | `0` | Jours entre l'événement du calendrier et la collecte (`1` si l'événement est la veille) |
 | `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement ; inutile avec un calendrier) |
 | `content` | texte | selon la couleur | `ordures`, `recyclables`, `verre`, `papier`, `biodechets` |
 | `color` | couleur CSS | selon la couleur | Couleur de la jauge |
@@ -206,6 +208,7 @@ hour: 9              # truck pickup hour
 # entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
 # interval: 14
 # calendar_filter: Recycling   # with a calendar.* entity: only events whose title contains this text
+# calendar_offset: 1           # the calendar event is the day before pickup
 # full_color: true    # paint the whole bin, not just the lid
 # container: bag      # rubbish bag instead of a wheelie bin
 ```
