@@ -3,7 +3,7 @@
  * Animated Lovelace card for bin collection days
  * https://github.com/skyrotter/ha-poubelle-card — MIT License
  */
-const PB_VERSION = '1.5.4';
+const PB_VERSION = '1.6.0';
 
 const PB_IMG = {
   grise: { lid: 'data:image/webp;base64,UklGRjoIAABXRUJQVlA4WAoAAAAQAAAAvQAAGwAAQUxQSOUCAAABBlr8PxmSpIjM6l7b3j3bXLOnz7Zt601Ptn1Ptm3b9t3aVldmxkP1VGNn8vkfETEBWDfZFpia0UAV9WdqlUHtKQMJAR1KF5xx2glH7zV5SmmTYeuNwsabZDcaObxv927de+uAQUMw0FDj2YIAbTdUE2sI5rJ7P1wl2cqKlavnTJ+pOntOFjOm//7dt9//8uvf//3/H95+7clzS/vtv1dL+YADdb+995w2Ycw2mIrxu+48ZuvRA2wxUSa2A/pQoqq2ehvCBpyPVSnbZfwTAsCpqg+y7n774psv45G7Hnpx1u+TKK+tbrL14GZhVRDAidVE1SZZAu8w+qJHn31f4FMEARCq+pDX53aqCPnz5V7xyMMP3VIaPWHS2HE7UX5jlfOwUVJuBk6UUBx20tlMuXve/ubCZQLAKdpCr6qaqrrgJbtq6fIVy5Yvfv255/Hc808dPQYnbN/JEkyBcxQ69KRmNARsfcaL8wWXlCeO3r20/+2Ht2hZnxcALlUXpK0NqVY0CILU6N999MRdCAactdj8afxwRcJoFNOAC56bJ4CHoLJScnoXIG14gARAq3sELwCWv3FxQq3eIQAOJdsgxVkzBUhdEHgNol5TdaoKaXc1dQC+//DzzwB8iuUuXevu4aRhl1Z8CsmG6hKy0i4HdZI7xbVUaBDY7vqbhCpx6FsPAof3BxE3COD3xEVEjYpXuxo0iHtMFx8rqMiFZGHQAEXLGh+iJWB6b2JqZIILxCFeZEEvQmkXmPrxsXEzp4fVF142Ba5XkR4THzVFwvVfdyQu1MUk1GeWhJhZMHq7nW5YtMWgTlTnyZ9IkKhdunytuJ+/f/v8Qm0W5XdXSpDYDV6y5dpMp9fEKSI3AALV1f7KfGyTIg1b5iGRXJGbcnCiBKDrueIlnq7PMIwFAV13uOSW98VLRN1AgKFst2Mu/nyhAF5iC4MGbHLC9dMFgKuoRJahab/9NEuA4BQS15kEDwqQuiDxnQEAVlA4IC4FAACQFwCdASq+ABwAPmEmj0UkIiEYq7YsQAYEtIBpd9nnRnw38twT8/mQ15Z43uGpxnk0/qn/B9PeZMsfmgf+Pz0/Tv/j9xD+Vf1n/k9LN7Jf6quITcKy73qgxgm/y9hEB2xAGvWwyawvrPnJNYJfGYMoYf6LSdYQot541JPNBSlSzK259JEnWPlsHIusUNWD7gRVNR0RLX9wMnD0jT6hLV9y+m4NT9raTvzedCqLT2sznpa8chwO6zu9gCWb7qfb9wHE0zAioAD+/tAzP8Id3+9EJEHfHR5aGTyuDa0hUpbfE8aTNVkYrfGzpvlm7LrSJ2dV6Ns4ir8Gu7gTZfDNeVkcLNLHSydjT3KynY8bu/8QnvHmRKaO5ovn495uzPmAIx268d590Y89R40ePNN6evxkQt7z53Pddy/vtRSG87ulCkul6qyM1wkm5YuTacYwJR+ea0SQcgZeRQFXwoClKenBXrGRjfkihW4ajPyx43jarwRPcwIvZ1V4Gvk8GHeq9yor/UKiw75HkF6juekx6mb4pyhdfJnvEbfU5QJutmEC9emPDZHI9TWPzyQNmVjsa/YmfVzlxt83QC04WjS8+e2TgP8vpE7HzdJVHm163zH7c8mK/v+YDrcSubjP7yfYJWvinGr3bYDgZN9MzYDeDpz81W38iW5HZ73YY8uoKsT5CeeY56ohrzdYzIlBXmq1VCN4uMhU54hVoLEvUQwTAqh3CJ0jM3X4lLvhTXf9uKWdpf7Bh+URbBORwI0RrpCd4sxsW4+/cCzaMBtTe6Z9173Swf/UdLvHfgicEc6vMKARh7T7+cR5yAIJaAN1N8sIl4NX4f3Nrhta4zgOIMazZo5gS7ptiBF7381B+KCqI4SRo70Lwjv/2fcaexwuFMFX/I6Boc+6BtyFp1ZM+KQYUpzDRF3Vt/b5f3Ot9gmWqlKnQ0ATcYVcA3//sc+pYPdxB6XRVAg1dYYcqiIbgqE/ZiUEC+f18nmepM2FpzVevvofdJz54p+sQPuoo0PlX+RX4TGc7+iEgcN6TCkuFRfIsn8F39QX3I+77c5wVBmUIxC7SrBUQMbn2XJBiwl9m8CPsH4ewf74fWB23qn/54WuPL7fnV06kkf/I5MmyDu5Zy/33XnT/w/94105JKVxAiLKaqoFE3f5nAyZ+aJMtCKBRgAur/8a//Gdo24pIhkP3cEAi+iEKXEvAlt53o6PxS7EPyWQVkUpr0Zr6zH0NP74jSbfAbIqZDoEZTU+nA2g0doJ1NDmrHjkCz+vZ0veTLNZhn40JsB2+GSKxmg8rzETAYZ5vucQPmUVfBMbsqJNk8+RjukmnDigYX0FK+Yle83jweInPM5V+gU8iKvuKwbI0vL6qBwQQXRp7Ia2EePWJXeS0rlS8KD1KSFbOfPNN7oZIBXbTrRQ3076JgIa7JnDYvOXxaYFL/sf96XZ8UgADX10dIgvf22Jzd0lERHeJnZogHq+HUNmfanP98cZSICKZCU0NAQkcdHT7IX/AKCbopfnNFgdJ8GZdOtjF0VjNJfRmy0URepdt9/R5lUvURpa/A8AJrvhnE2HVOJ0EF25SeG4XemExNZSR6ymKM3FFS1RjUhCZ4eGJhLLbUvbayp9YMHtsDhdPCqt/bDRbXpBXrfwEoMJZnQ/v+elTk8Z44Vpd0YGXaca8Up8gvmw/higkGd2PBTkyiAGqbozEYiKF8gdk5XX/zf//FpBL4ChlyzFPVZCDpSqXAPv8Sv9i0sVHew5nf5Sp9nxKrSkU1cAQAA=', body: 'data:image/webp;base64,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' },
@@ -55,6 +55,34 @@ const pbBagSvg = (col, op, content) => `<svg class="bagsvg" viewBox="0 0 150 253
   <path d="M70 66 C56 58 50 48 58 44 C66 41 72 54 74 64 Z M80 66 C94 58 100 48 92 44 C84 41 78 54 76 64 Z" fill="#000" fill-opacity=".18"/>
  </g></svg>`;
 
+/* ---- encombrants : tas d'objets (frigo, matelas, télé, pneu, carton, chaise, planche), même cadre 150 × 253 ---- */
+const PB_BULKY_SVG = `<svg class="bulkysvg" viewBox="0 0 150 253" aria-hidden="true">
+ <defs><linearGradient id="pbfr" x1="0" x2="1"><stop offset="0" stop-color="#e9edf1"/><stop offset=".55" stop-color="#ffffff"/><stop offset="1" stop-color="#c3cad1"/></linearGradient>
+  <linearGradient id="pbmat" x1="0" x2="1"><stop offset="0" stop-color="#9fb8d6"/><stop offset="1" stop-color="#6f8fb6"/></linearGradient></defs>
+ <g class="bulkyg"><g transform="translate(75 252) scale(1.32) translate(-80 -252)">
+  <!-- matelas appuyé à gauche -->
+  <g transform="rotate(-14 30 250)"><rect x="8" y="118" width="40" height="134" rx="8" fill="url(#pbmat)"/>
+   <path d="M14 140h28M14 166h28M14 192h28M14 218h28" stroke="#fff" stroke-opacity=".45" stroke-width="2" stroke-dasharray="3 4"/></g>
+  <!-- vieux frigo -->
+  <rect x="58" y="96" width="52" height="154" rx="5" fill="url(#pbfr)" stroke="#8d969f" stroke-width="1.2"/>
+  <path d="M58 146h52" stroke="#8d969f" stroke-width="1.6"/>
+  <rect x="62" y="104" width="4" height="30" rx="2" fill="#9aa3ac"/><rect x="62" y="154" width="4" height="40" rx="2" fill="#9aa3ac"/>
+  <path d="M90 108l12 14M84 170l18 26" stroke="#c8ced4" stroke-width="2" stroke-linecap="round"/>
+  <!-- chaise renversée sur le frigo -->
+  <g transform="rotate(158 98 86)" fill="none" stroke="#8a5a2b" stroke-width="4" stroke-linecap="round"><path d="M80 70h34M84 70v30M110 70v30M80 70v-26M80 50h22"/></g>
+  <!-- planche -->
+  <rect x="96" y="196" width="56" height="9" rx="2" fill="#c08a4e" transform="rotate(-28 120 200)"/>
+  <!-- carton -->
+  <g transform="rotate(6 128 232)"><rect x="110" y="212" width="38" height="38" rx="2" fill="#c49a62"/><path d="M110 222h38M129 212v10" stroke="#8d6538" stroke-width="2"/></g>
+  <!-- pneu -->
+  <ellipse cx="34" cy="238" rx="27" ry="13" fill="#24272b"/><ellipse cx="34" cy="236" rx="13" ry="5.5" fill="#4a4f56"/>
+  <path d="M10 236q24 -10 48 0" stroke="#3b3f45" stroke-width="2" fill="none"/>
+  <!-- vieille télé, écran fendu -->
+  <g transform="rotate(-6 62 222)"><rect x="34" y="194" width="56" height="44" rx="5" fill="#7a5a3a" stroke="#4e3a26" stroke-width="1.2"/>
+   <rect x="39" y="199" width="36" height="34" rx="4" fill="#5f8f86"/><path d="M50 202l6 12l-8 8l10 9M62 214l10 -6" stroke="#e9f3f1" stroke-width="1.3" fill="none"/>
+   <circle cx="83" cy="206" r="3" fill="#2b2f33"/><circle cx="83" cy="216" r="3" fill="#2b2f33"/></g>
+ </g></g></svg>`;
+
 /* ---- contenu qui dépasse quand c'est plein ---- */
 const PB_CONTENT = {
   ordures: `<svg viewBox="0 0 130 70" width="100%" height="100%" aria-hidden="true">
@@ -98,6 +126,7 @@ const PB_I18N = {
     emptied: 'Vidée', emptied_txt: "Vidée aujourd'hui ✅",
     today: 'Collecte', today_txt: "Collecte aujourd'hui 🚛",
     eve: 'Ce soir', eve_txt: 'À sortir ce soir ! 🌙',
+    bulky: 'Encombrants',
     in_days: n => `Dans ${n} j`, next_day: d => `Collecte ${d}`, next_date: d => `Collecte le ${d}`,
     fill: 'Remplissage', unknown: 'Date inconnue', shifted: 'décalée (jour férié)',
   },
@@ -110,6 +139,7 @@ const PB_I18N = {
     emptied: 'Emptied', emptied_txt: 'Emptied today ✅',
     today: 'Pickup', today_txt: 'Pickup today 🚛',
     eve: 'Tonight', eve_txt: 'Put it out tonight! 🌙',
+    bulky: 'Bulky waste',
     in_days: n => `In ${n} d`, next_day: d => `Pickup on ${d}`, next_date: d => `Pickup on ${d}`,
     fill: 'Fill level', unknown: 'Unknown date', shifted: 'moved (public holiday)',
   },
@@ -119,6 +149,11 @@ const PB_DAY_NAMES = { lundi: 0, mardi: 1, mercredi: 2, jeudi: 3, vendredi: 4, s
   monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6,
   lun: 0, mar: 1, mer: 2, jeu: 3, ven: 4, sam: 5, dim: 6, mon: 0, tue: 1, wed: 2, thu: 3, fri: 4, sat: 5, sun: 6 };
 
+const PB_MONTHS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const PB_MONTH_NAMES = { janvier: 1, fevrier: 2, février: 2, mars: 3, avril: 4, mai: 5, juin: 6, juillet: 7, aout: 8, août: 8, septembre: 9, octobre: 10, novembre: 11, decembre: 12, décembre: 12,
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+  jan: 1, fev: 2, fév: 2, feb: 2, mar: 3, avr: 4, apr: 4, juil: 7, jul: 7, aug: 8, sep: 9, sept: 9, oct: 10, nov: 11, dec: 12, déc: 12 };
+const pbMonth = m => (typeof m === 'string' && isNaN(m)) ? PB_MONTH_NAMES[m.trim().toLowerCase()] : Number(m);
 const pbDay = d => (typeof d === 'string' && isNaN(d)) ? PB_DAY_NAMES[d.trim().toLowerCase()] : Number(d);
 const pbMidnight = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 /* numéro de semaine ISO 8601 (celui des calendriers français) */
@@ -152,12 +187,15 @@ class PoubelleCard extends HTMLElement {
   static getConfigForm() {
     const binOpts = Object.keys(PB_BINS).map(b => ({ value: b, label: b }));
     const dayOpts = PB_I18N.fr.days.map((d, i) => ({ value: String(i), label: d }));
+    const monthOpts = PB_MONTHS_FR.map((m, i) => ({ value: String(i + 1), label: m }));
     return {
       schema: [
         { name: 'bin', required: true, selector: { select: { mode: 'dropdown', options: binOpts } } },
         { name: 'name', selector: { text: {} } },
         { name: 'container', selector: { select: { mode: 'dropdown', options: [
-          { value: 'bac', label: 'Conteneur à roulettes / Wheelie bin' }, { value: 'sac', label: 'Sac poubelle / Rubbish bag' }] } } },
+          { value: 'bac', label: 'Conteneur à roulettes / Wheelie bin' }, { value: 'sac', label: 'Sac poubelle / Rubbish bag' },
+          { value: 'encombrants', label: 'Encombrants / Bulky waste' }] } } },
+        { name: 'image', selector: { text: {} } },
         { name: 'entity', selector: { entity: { domain: ['sensor', 'calendar', 'input_datetime'] } } },
         { name: 'calendar_filter', selector: { text: {} } },
         { name: 'calendar_offset', selector: { number: { min: -7, max: 7, mode: 'box' } } },
@@ -171,6 +209,7 @@ class PoubelleCard extends HTMLElement {
           { value: '2', label: '2e du mois / 2nd' }, { value: '3', label: '3e du mois / 3rd' }, { value: '4', label: '4e du mois / 4th' },
           { value: 'last', label: 'Dernier du mois / Last of the month' }] } } },
         { name: 'month_day', selector: { number: { min: 1, max: 31, mode: 'box' } } },
+        { name: 'months', selector: { select: { multiple: true, options: monthOpts } } },
         { name: 'holidays', selector: { select: { mode: 'dropdown', options: [
           { value: 'aucun', label: 'Jours fériés ignorés / Ignore holidays' },
           { value: 'report', label: 'Reportée au lendemain / Moved to next day' },
@@ -198,17 +237,19 @@ class PoubelleCard extends HTMLElement {
         bin: 'Couleur / Bin', name: 'Nom / Name', entity: 'Entité (optionnel) / Entity (optional)',
         calendar_filter: 'Filtre calendrier (titre contient) / Calendar filter (title contains)',
         calendar_offset: 'Décalage calendrier (jours) / Calendar offset (days)',
-        days: 'Jours de collecte / Pickup days', weeks: 'Semaines / Weeks', month_week: 'Une fois par mois / Once a month', month_day: 'Jour fixe du mois (1-31) / Day of month', holidays: 'Jours fériés / Public holidays', region: 'Calendrier des fériés / Holiday calendar', hour: 'Heure de passage / Pickup hour',
+        days: 'Jours de collecte / Pickup days', weeks: 'Semaines / Weeks', month_week: 'Une fois par mois / Once a month', month_day: 'Jour fixe du mois (1-31) / Day of month', months: 'Mois de collecte (vide = toute l\'année) / Pickup months (empty = all year)', holidays: 'Jours fériés / Public holidays', region: 'Calendrier des fériés / Holiday calendar', hour: 'Heure de passage / Pickup hour',
         interval: 'Jours entre 2 collectes / Days between pickups', scale: 'Taille / Size',
         headroom: 'Marge haute / Headroom', compact: 'Compact', show_meter: 'Jauge / Meter',
         show_status: 'Texte de statut / Status text', theme_background: 'Fond du thème HA / HA theme background',
         full_color: 'Bac entièrement coloré / Fully coloured bin', container: 'Type / Container',
-        language: 'Langue / Language',
+        language: 'Langue / Language', image: 'Image perso (remplace le dessin) / Custom image (replaces the drawing)',
       }[s.name]),
     };
   }
 
   setConfig(c) {
+    // encombrants : pas de couleur de bac, gris par défaut (jauge)
+    if (c && !c.bin && /^(encombrants?|bulky)$/i.test(String(c.container || ''))) c = { ...c, bin: 'grise' };
     if (!c || !c.bin) throw new Error('poubelle-card : indique « bin » (grise, noire, jaune, verte, bleue, marron, rouge)');
     let bin = String(c.bin).toLowerCase();
     bin = PB_ALIASES[bin] || bin;
@@ -221,6 +262,9 @@ class PoubelleCard extends HTMLElement {
     this._mday = mday;
     this._bin = bin;
     this._bag = /^(sac|sacs|bag|bags)$/i.test(String(c.container || ''));
+    this._bulky = /^(encombrants?|bulky)$/i.test(String(c.container || ''));
+    // months : liste de mois (1-12 ou noms) ; vide = toute l'année
+    this._months = [].concat(c.months ?? []).map(pbMonth).filter(m => m >= 1 && m <= 12);
     this._c = Object.assign({ hour: 9, interval: 7, scale: 0.62, headroom: 70, language: 'auto' }, c);
     this._days = (days || []).map(pbDay).filter(d => d >= 0 && d <= 6);
     this._cal = null; this._calAt = 0; this._calKey = null;
@@ -278,7 +322,8 @@ class PoubelleCard extends HTMLElement {
     const bodyF = c.body_filter || B.body || '', lidF = c.lid_filter || B.lid || '';
     // full_color : tout le bac prend la couleur (et pas seulement le couvercle). Une couche de la couleur,
     // découpée à la forme du corps, colorise le gris en gardant ses ombres et ses reflets (mix-blend-mode: color).
-    const paint = c.full_color && !this._bag ? (c.body_color || B.paint || '') : '';
+    const img = String(c.image || '').trim();
+    const paint = c.full_color && !this._bag && !this._bulky && !img ? (c.body_color || B.paint || '') : '';
     const [bagCol, bagOp] = PB_BAG_COLORS[this._bin];
     const bodyImg = PB_IMG[B.img].body;
     if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
@@ -315,6 +360,9 @@ class PoubelleCard extends HTMLElement {
     .bagsvg{position:absolute;left:0;bottom:0;width:150px;height:253px;z-index:2;overflow:visible;filter:drop-shadow(0 14px 16px rgba(0,0,0,.45))}
     .bagg{transform-origin:75px 250px;transition:transform 1.1s cubic-bezier(.3,1.4,.5,1)}
     .bagmode .fx{top:40px}
+    .bulkysvg{position:absolute;left:0;bottom:0;width:150px;height:253px;z-index:2;overflow:visible;filter:drop-shadow(0 14px 16px rgba(0,0,0,.45))}
+    .bulkyg{transform-origin:75px 252px;transition:transform 1.1s cubic-bezier(.3,1.4,.5,1)}
+    .custom{position:absolute;left:0;bottom:0;width:150px;height:253px;object-fit:contain;object-position:50% 100%;z-index:2;filter:drop-shadow(0 14px 16px rgba(0,0,0,.45))}
     .shadow{position:absolute;left:10px;right:10px;bottom:-8px;height:14px;border-radius:50%;background:rgba(0,0,0,.45);filter:blur(6px);z-index:0}
     .card.veille .bin{animation:shake 1.8s ease-in-out infinite}
     .card.jour .bin{animation:hop 1.1s ease-in-out infinite}
@@ -351,9 +399,9 @@ class PoubelleCard extends HTMLElement {
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
     </style>
     <ha-card class="card${c.entity ? ' clickable' : ''}"><div class="head"><span class="name"></span><span class="pill"></span></div>
-     <div class="scaler"><div class="stage-wrap"><div class="stage${this._bag ? ' bagmode' : ''}">
+     <div class="scaler"><div class="stage-wrap"><div class="stage${this._bag || this._bulky || img ? ' bagmode' : ''}">
       <div class="fx">${PB_FX_FLY}${PB_FX_STINK}</div>${PB_FX_SPARK}<div class="shadow"></div>
-      <div class="bin">${this._bag ? pbBagSvg(bagCol, bagOp, content) : `<div class="trash">${content}</div>
+      <div class="bin">${img ? `<img class="custom" src="${img.replace(/["<>]/g, '')}" alt="">` : this._bulky ? PB_BULKY_SVG : this._bag ? pbBagSvg(bagCol, bagOp, content) : `<div class="trash">${content}</div>
        <img class="body" src="${bodyImg}" alt=""><div class="lift"></div><div class="paint"></div><img class="lid" src="${PB_IMG[B.img].lid}" alt="">`}</div>
      </div></div></div>
      <div class="status"></div>
@@ -423,6 +471,7 @@ class PoubelleCard extends HTMLElement {
     const nth = d => mws.some(w => w === -1 ? isLast(d) : Math.ceil(d.getDate() / 7) === w);
     const lastDom = d => new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
     const plan = d => {
+      if (this._months.length && !this._months.includes(d.getMonth() + 1)) return false;
       if (this._mday.length) return this._mday.some(x => d.getDate() === Math.min(x, lastDom(d)));
       if (!this._days.includes((d.getDay() + 6) % 7)) return false;
       if (mw) return nth(d);
@@ -445,7 +494,9 @@ class PoubelleCard extends HTMLElement {
       return d;
     };
     const list = [];
-    for (let k = -75; k <= 75; k++) { const d = at(k); if (!plan(d)) continue; const e = eff(d); if (!e) continue;
+    // avec months, la prochaine collecte peut être dans plusieurs mois (hors saison) : on cherche sur un an
+    const K = this._months.length ? 370 : 75;
+    for (let k = -K; k <= K; k++) { const d = at(k); if (!plan(d)) continue; const e = eff(d); if (!e) continue;
       list.push({ k: Math.round((pbMidnight(e) - today) / 86400000), moved: pbKey(e) !== pbKey(d) }); }
     const next = list.filter(x => x.k > 0 || (x.k === 0 && h < H)).sort((a, b) => a.k - b.k)[0];
     const last = list.filter(x => x.k < 0 || (x.k === 0 && h >= H)).sort((a, b) => b.k - a.k)[0];
@@ -474,13 +525,19 @@ class PoubelleCard extends HTMLElement {
     }
     const cls = state === 'inconnu' ? '' : state;
     q('ha-card').className = 'card ' + cls + (fill >= 0.6 && state !== 'videe' ? ' plein' : '') + (this._c.entity ? ' clickable' : '');
-    q('.name').textContent = this._c.name || (this._bag ? T.bag : T.bin)[this._bin];
+    q('.name').textContent = this._c.name || (this._bulky ? T.bulky : (this._bag ? T.bag : T.bin)[this._bin]);
     const p = q('.pill'); p.className = 'pill ' + cls; p.textContent = pill;
     q('.status').textContent = moved && state !== 'videe' ? `${text} · ${T.shifted}` : text;
     q('.ml').textContent = T.fill;
     const f = state === 'videe' ? 0 : (state === 'jour' ? 1 : fill), pct = Math.round(f * 100);
     q('.pct').textContent = pct + ' %'; q('.bar i').style.width = pct + '%';
     const peek = f * 72;
+    if (String(this._c.image || '').trim()) return; // image perso : pas de déformation
+    if (this._bulky) {
+      // le tas grossit avec le remplissage : quelques objets au début, gros tas la veille de la collecte
+      q('.bulkyg').style.transform = `scale(${(0.72 + 0.28 * f).toFixed(3)})`;
+      return;
+    }
     if (this._bag) {
       // le sac se gonfle avec le remplissage : à plat et froissé quand il est vide, bien rond quand il est plein
       q('.bagg').style.transform = `scale(${(0.82 + 0.18 * f).toFixed(3)}, ${(0.38 + 0.62 * f).toFixed(3)})`;
