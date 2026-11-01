@@ -143,6 +143,32 @@ const PB_I18N = {
     in_days: n => `In ${n} d`, next_day: d => `Pickup on ${d}`, next_date: d => `Pickup on ${d}`,
     fill: 'Fill level', unknown: 'Unknown date', shifted: 'moved (public holiday)',
   },
+  sr: {
+    days: ['понедељак', 'уторак', 'среда', 'четвртак', 'петак', 'субота', 'недеља'],
+    bin: { grise: 'Сива канта', noire: 'Црна канта', jaune: 'Жута канта', verte: 'Зелена канта',
+           bleue: 'Плава канта', marron: 'Браон канта', rouge: 'Црвена канта' },
+    bag: { grise: 'Сива врећа', noire: 'Црна врећа', jaune: 'Жута врећа', verte: 'Зелена врећа',
+           bleue: 'Плава врећа', marron: 'Браон врећа', rouge: 'Црвена врећа' },
+    emptied: 'Испражњено', emptied_txt: "Испражњено данас ✅",
+    today: 'Одношење смећа', today_txt: "Одношење данас 🚛",
+    eve: 'Вечерас', eve_txt: 'Изнети вечерас! 🌙',
+    bulky: 'Кабасти отпад',
+    in_days: n => `За ${n} д`, next_day: d => `Одношење у ${d}`, next_date: d => `Одношење дана ${d}`,
+    fill: 'Попуњеност', unknown: 'Непознат датум', shifted: 'померено (државни празник)',
+  },
+  'sr-Latn': {
+    days: ['ponedeljak', 'utorak', 'sreda', 'četvrtak', 'petak', 'subota', 'nedelja'],
+    bin: { grise: 'Siva kanta', noire: 'Crna kanta', jaune: 'Žuta kanta', verte: 'Zelena kanta',
+           bleue: 'Plava kanta', marron: 'Braon kanta', rouge: 'Crvena kanta' },
+    bag: { grise: 'Siva vreća', noire: 'Crna vreća', jaune: 'Žuta vreća', verte: 'Zelena vreća',
+           bleue: 'Plava vreća', marron: 'Braon vreća', rouge: 'Crvena vreća' },
+    emptied: 'Ispražnjeno', emptied_txt: "Ispražnjeno danas ✅",
+    today: 'Odnošenje smeća', today_txt: "Odnošenje danas 🚛",
+    eve: 'Večeras', eve_txt: 'Izneti večeras! 🌙',
+    bulky: 'Kabasti otpad',
+    in_days: n => `Za ${n} d`, next_day: d => `Odnošenje u ${d}`, next_date: d => `Odnošenje dana ${d}`,
+    fill: 'Popunjenost', unknown: 'Nepoznat datum', shifted: 'pomereno (državni praznik)',
+  },
 };
 
 const PB_DAY_NAMES = { lundi: 0, mardi: 1, mercredi: 2, jeudi: 3, vendredi: 4, samedi: 5, dimanche: 6,
@@ -231,7 +257,7 @@ class PoubelleCard extends HTMLElement {
           { name: 'full_color', selector: { boolean: {} } },
         ] },
         { name: 'language', selector: { select: { mode: 'dropdown', options: [
-          { value: 'auto', label: 'auto' }, { value: 'fr', label: 'Français' }, { value: 'en', label: 'English' }] } } },
+          { value: 'auto', label: 'auto' }, { value: 'fr', label: 'Français' }, { value: 'en', label: 'English' }, { value: 'sr', label: 'Српски' }, { value: 'sr-Latn', label: 'Srpski (latinica)' }] } } },
       ],
       computeLabel: s => ({
         bin: 'Couleur / Bin', name: 'Nom / Name', entity: 'Entité (optionnel) / Entity (optional)',
@@ -312,7 +338,18 @@ class PoubelleCard extends HTMLElement {
   _t_() {
     let l = this._c.language;
     if (!l || l === 'auto') l = (this._hass?.locale?.language || this._hass?.language || navigator.language || 'fr');
-    return PB_I18N[String(l).slice(0, 2)] || PB_I18N.en;
+    
+    // 1. Check for an exact match (e.g., 'sr-Latn')
+    if (PB_I18N[l]) return PB_I18N[l];
+    
+    // 2. Normalize and check for case variations (e.g., 'sr-latn' or 'sr_latn')
+    const formatted = String(l).replace('_', '-');
+    const normalizedLatn = formatted.toLowerCase() === 'sr-latn' ? 'sr-Latn' : formatted;
+    if (PB_I18N[normalizedLatn]) return PB_I18N[normalizedLatn];
+
+    // 3. Fallback to 2-letter code
+    const shortCode = String(l).slice(0, 2);
+    return PB_I18N[shortCode] || PB_I18N.en;
   }
 
   _build() {
