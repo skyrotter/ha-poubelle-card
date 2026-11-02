@@ -1,0 +1,38 @@
+name: Download badge
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Count downloads of poubelle-card.js across all releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          COUNT=$(gh api --paginate "repos/${{ github.repository }}/releases" \
+            --jq '[.[].assets[] | select(.name == "poubelle-card.js") | .download_count] | add // 0' \
+            | awk '{ s += $1 } END { print s + 0 }')
+          echo "Downloads: $COUNT"
+          echo "COUNT=$COUNT" >> "$GITHUB_ENV"
+
+      - name: Publish badge data to the badges branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir badge && cd badge
+          git init -q -b badges
+          printf '{"schemaVersion":1,"label":"downloads","message":"%s","color":"blue"}\n' "$COUNT" > downloads.json
+          git add downloads.json
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -q -m "Update download badge"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" badges

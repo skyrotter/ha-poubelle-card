@@ -1,0 +1,43 @@
+name: Release assets
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  upload-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the release tag
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Check the tag matches package.json
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          PKG="$(node -p "require('./package.json').version")"
+          if [ "${TAG#v}" != "$PKG" ]; then
+            echo "::error::Release tag $TAG does not match package.json version $PKG"
+            exit 1
+          fi
+
+      - name: Test and build
+        run: |
+          npm ci
+          TZ=Australia/Sydney npm test
+          npm run build
+
+      - name: Attach the card to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            dist/poubelle-card.js \
+            --clobber
