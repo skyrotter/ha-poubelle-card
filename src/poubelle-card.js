@@ -1,7 +1,6 @@
 /*!
  * poubelle-card — animated Lovelace card for bin collection days
- * https://github.com/Roving-Ronin/ha-garbage-card — MIT License
- * Based on skyrotter/ha-poubelle-card.
+ * https://github.com/skyrotter/ha-poubelle-card — MIT License
  */
 import { PB_IMG, PB_BINS, PB_BODY_RATIO, PB_WHEEL_HOLE, PB_BAG_COLORS, pbBagSvg, PB_BULKY_SVG, PB_CONTENT,
   PB_FX_FLY, PB_FX_STINK, PB_FX_SPARK } from './assets.js';
@@ -319,5 +318,5 @@ window.customCards = window.customCards || [];
 if (!window.customCards.some(c => c.type === 'poubelle-card'))
   window.customCards.push({ type: 'poubelle-card', name: 'Poubelle Card', preview: true,
     description: 'Animated bin that fills up and empties with your collection days',
-    documentationURL: 'https://github.com/Roving-Ronin/ha-garbage-card' });
+    documentationURL: 'https://github.com/skyrotter/ha-poubelle-card' });
 console.info(`%c POUBELLE-CARD %c v${PB_VERSION} `, 'background:#ffc107;color:#000;font-weight:700', 'background:#333;color:#fff');
