@@ -22,7 +22,7 @@ jobs:
       - name: Test (scheduling logic + translation files)
         run: npm test
         env:
-          TZ: Australia/Sydney
+          TZ: Europe/Paris
 
       - name: Build dist/poubelle-card.js
         run: npm run build
