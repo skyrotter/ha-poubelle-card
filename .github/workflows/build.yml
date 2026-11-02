@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test (scheduling logic + translation files)
+        run: npm test
+        env:
+          TZ: Europe/Paris
+
+      - name: Build dist/poubelle-card.js
+        run: npm run build
+
+      - name: Check the committed dist/ matches src/
+        run: |
+          if ! git diff --quiet -- dist; then
+            echo "::error::dist/poubelle-card.js is out of date. Run 'npm run build' and commit the result."
+            git --no-pager diff --stat -- dist
+            exit 1
+          fi

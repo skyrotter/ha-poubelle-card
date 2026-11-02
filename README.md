@@ -1,12 +1,19 @@
 # 🗑️ Poubelle Card
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz/docs/faq/custom_repositories)
-![version](https://img.shields.io/badge/version-1.6.0-blue)
+**Français** · [English](README.en.md)
+
+![release](https://img.shields.io/github/v/release/skyrotter/ha-poubelle-card?style=flat-square&color=green)
+![downloads](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/badges/downloads.json&style=flat-square)
+![HACS](https://img.shields.io/badge/HACS-Custom-orange?style=flat-square)
+![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2026.1%2B-41BDF5?style=flat-square)
+![build](https://img.shields.io/github/actions/workflow/status/skyrotter/ha-poubelle-card/build.yml?branch=main&style=flat-square&label=build)
+![maintained](https://img.shields.io/badge/maintained-yes-brightgreen?style=flat-square)
+![commit activity](https://img.shields.io/github/commit-activity/y/skyrotter/ha-poubelle-card?style=flat-square)
+![license](https://img.shields.io/github/license/skyrotter/ha-poubelle-card?style=flat-square)
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
-*Animated Lovelace card for Home Assistant bin collection days — [English below](#-english).*
 
-![Aperçu](preview.gif)
+![Aperçu](https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/main/images/fr/preview.gif)
 
 ## ✨ Fonctionnalités
 
@@ -18,17 +25,18 @@ Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des j
 | **Collecte** | jour J, avant l'heure de passage | la poubelle sautille |
 | **Vidée** | jour J, après l'heure de passage | étincelles ✨, bordure verte |
 
-- 7 couleurs : `grise`, `noire`, `jaune`, `verte`, `bleue`, `marron` (ou `brune`), `rouge`
+- 10 couleurs : `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red`, `purple`, `burgundy`, `lime` (les noms français `grise`, `noire`, `jaune`, `violette`, `bordeaux`… restent acceptés)
 - **Bac entièrement coloré** (`full_color: true`) ou couvercle seul
-- **Sac poubelle** (`container: sac`) pour les communes sans conteneurs
-- **Encombrants** (`container: encombrants`) : tas d'objets qui grossit jusqu'au jour de collecte, ou ta propre image (`image`)
-- **Collectes saisonnières** (`months`) : ex. végétaux tous les vendredis de mai à octobre
-- Contenu adapté : sacs d'ordures, emballages, verre, papier, biodéchets
-- Deux sources : **jours fixes** (YAML) ou **entité** (capteur date, nombre de jours, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule))
-- Français / anglais automatique (langue du profil HA)
-- Éditeur visuel, aucune dépendance, respecte `prefers-reduced-motion`
+- **Sac poubelle** (`container: bag`), **encombrants** (`container: bulky`) ou ta propre image (`image`)
+- Plannings : chaque semaine, **toutes les N semaines à partir d'une date**, semaines paires / impaires, une fois par mois, collectes saisonnières
+- **Jours fériés** via l'intégration [Holiday](https://www.home-assistant.io/integrations/holiday), **jour ouvré suivant** via l'intégration [Workday](https://www.home-assistant.io/integrations/workday)
+- Ou une entité : capteur date, nombre de jours, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule)
+- Carte et éditeur visuel dans la **langue de Home Assistant** automatiquement (anglais, français, serbe cyrillique et latin ; les autres langues passent en anglais)
+- Aucune dépendance, respecte `prefers-reduced-motion`
 
 ## 📦 Installation
+
+Nécessite **Home Assistant 2026.1** ou plus récent.
 
 ### HACS (recommandé)
 1. HACS → ⋮ → **Dépôts personnalisés** → ajoute `https://github.com/skyrotter/ha-poubelle-card`, type **Tableau de bord** (*Dashboard*).
@@ -36,219 +44,140 @@ Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des j
 3. Recharge le navigateur (Ctrl + F5).
 
 ### Manuelle
-1. Copie `poubelle-card.js` dans `/config/www/`.
+1. Télécharge `poubelle-card.js` depuis la [dernière version](https://github.com/skyrotter/ha-poubelle-card/releases/latest) et copie-le dans `/config/www/`.
 2. Paramètres → Tableaux de bord → ⋮ → Ressources → ajoute `/local/poubelle-card.js` (type *Module JavaScript*).
 
 ## ⚙️ Configuration
 
+Tout se règle dans l'éditeur visuel. Exemples YAML :
+
 ### Jours fixes
 ```yaml
 type: custom:poubelle-card
-bin: noire
+bin: black
 name: Poubelle noire
 days: [mardi, vendredi]   # ou [1, 4] (0 = lundi … 6 = dimanche)
 hour: 9                   # heure de passage du camion
 ```
 
-### Bac entièrement coloré
-Par défaut, seul le couvercle porte la couleur. Avec `full_color`, tout le bac est coloré (la roue reste noire) : plus lisible quand plusieurs poubelles sont côte à côte.
+### Toutes les N semaines à partir d'une date
+`start_date` est n'importe quelle date de collecte, passée ou à venir. Les collectes se répètent toutes les `every` semaines, dans les deux sens. Le jour de la semaine est celui de `start_date`, sauf si `days` est indiqué.
 ```yaml
 type: custom:poubelle-card
-bin: bleue          # ou verte, brune, jaune, rouge
+bin: yellow
+start_date: 2026-11-04
+every: 2                  # 1 = chaque semaine, 2 = une semaine sur deux, 4 = toutes les 4 semaines
+```
+
+### Jours fériés
+Ajoute l'intégration **Holiday** (Paramètres → Appareils et services → Ajouter une intégration → Holiday) pour ton pays et ta région (ex. Alsace-Moselle). La carte trouve son calendrier toute seule, ou tu peux le choisir avec `holiday_calendar`.
+
+```yaml
+type: custom:poubelle-card
+bin: grey
+days: [lundi, jeudi]
+holidays: next_work_day
+```
+
+| `holidays` | Une collecte qui tombe un jour férié… | Nécessite |
+|---|---|---|
+| `none` (défaut) | n'est pas modifiée | — |
+| `next_day` | est reportée au lendemain | Holiday |
+| `next_work_day` | est reportée au jour ouvré suivant | Holiday + Workday |
+| `shift_week` | est reportée au même jour la semaine suivante (et encore si ce jour est aussi férié) | Holiday |
+| `shift_rest_of_week` | elle et les collectes suivantes de la semaine sont décalées d'un jour (ancien `decalage`) | Holiday |
+| `cancel` | est annulée | Holiday |
+
+`next_work_day` utilise le calendrier de l'intégration **Workday** (week-ends, jours exclus, jours fériés ajoutés ou retirés). Sans elle, la carte saute les fériés et les dimanches et affiche un avertissement.
+
+Quand une collecte est déplacée, la carte l'indique : « Collecte mardi · décalée (jour férié) ». Des dates ponctuelles peuvent être ajoutées avec `holiday_dates: ["2026-12-24"]`.
+
+### Bac entièrement coloré
+```yaml
+type: custom:poubelle-card
+bin: blue
 days: [mardi]
 full_color: true
 ```
-![Bacs entièrement colorés](preview-full-color.png)
+![Bacs entièrement colorés](https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/main/images/fr/preview-full-color.png)
 
 ### Sac poubelle (communes sans conteneurs)
-Un sac noué remplace le conteneur. Il est à plat en début de cycle et se gonfle jusqu'au jour de collecte. Le sac jaune est translucide, comme les sacs de tri.
 ```yaml
 type: custom:poubelle-card
-bin: jaune          # noire, grise, jaune, verte, bleue, marron, rouge
-container: sac
+bin: yellow
+container: bag
 days: [jeudi]
 ```
-![Sacs poubelles](preview-sacs.png)
+![Sacs poubelles](https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/main/images/fr/preview-sacs.png)
 
 ### Encombrants
-Un tas d'objets (frigo, matelas, télé, pneu, carton…) remplace le conteneur. Il grossit jusqu'au jour de collecte. `bin` est facultatif (jauge grise par défaut).
 ```yaml
 type: custom:poubelle-card
-container: encombrants
+container: bulky
 month_week: 1        # 1er mercredi du mois
 days: [mercredi]
 ```
 
 ### Image perso
-`image` remplace le dessin par ta propre illustration (PNG ou SVG, de préférence sur fond transparent), quel que soit le type.
 ```yaml
 type: custom:poubelle-card
-container: encombrants
+container: bulky
 image: /local/encombrants.png
 days: [mercredi]
 month_week: 1
 ```
 
-### Collectes saisonnières (certains mois seulement)
-`months` limite les collectes à certains mois (numéros ou noms). Hors saison, la carte affiche la prochaine collecte, ex. « Collecte le 7 mai ».
+### Collectes saisonnières
 ```yaml
 type: custom:poubelle-card
-bin: verte
+bin: green
 name: Végétaux
 days: [vendredi]
 months: [5, 6, 7, 8, 9, 10]   # de mai à octobre (ou [mai, juin, …])
 ```
 
-### Une semaine sur deux (semaines paires / impaires)
+### Semaines paires / impaires
 ```yaml
 type: custom:poubelle-card
-bin: jaune
+bin: yellow
 days: [mardi]
-weeks: paires      # semaines ISO paires ; la grise : weeks: impaires
+weeks: even        # semaines ISO paires ; l'autre bac : weeks: odd
 ```
 
 ### Une fois par mois
 ```yaml
 type: custom:poubelle-card
-bin: bleue
+bin: blue
 days: [mardi]
 month_week: 1        # 1er mardi du mois (2, 3, 4 ou last = dernier)
 ```
 ```yaml
 type: custom:poubelle-card
-bin: verte
-days: [samedi]
-month_week: [2, 4]   # 2e et 4e samedis du mois
-```
-```yaml
-type: custom:poubelle-card
-bin: verte
+bin: green
 month_day: 15        # le 15 de chaque mois
 ```
 
-### Jours fériés
-Chaque commune a sa règle : vérifie le calendrier de collecte de ta mairie / métropole.
+### Avec une entité ou un calendrier
 ```yaml
 type: custom:poubelle-card
-bin: grise
-days: [lundi, jeudi]
-holidays: decalage    # report | decalage | annule
-```
-Quand une collecte est déplacée, la carte l'indique : « Collecte mardi · décalée (jour férié) ».
-
-### Avec une entité
-```yaml
-type: custom:poubelle-card
-bin: jaune
-entity: sensor.collecte_jaune   # date, nb de jours, calendar.*, Waste Collection Schedule…
-interval: 14                    # jours entre deux collectes (calcul du remplissage)
-hour: 6
-```
-
-### Avec un calendrier
-Un seul calendrier pour toutes les poubelles ? `calendar_filter` ne garde que les événements dont le titre contient ce texte (sans tenir compte des majuscules). Le remplissage se cale alors sur la collecte précédente réelle : `interval` devient inutile.
-```yaml
-type: custom:poubelle-card
-bin: jaune
+bin: yellow
 entity: calendar.collectes
 calendar_filter: Tri            # ou une liste : [Tri, Emballages]
 hour: 6
 ```
-L'événement est la veille de la collecte (« Sortir les poubelles ») ? Ajoute `calendar_offset: 1`.
-
-### Deux cartes côte à côte (vue sections)
-```yaml
-type: grid
-columns: 2
-square: false
-cards:
-  - type: custom:poubelle-card
-    bin: noire
-    days: [1, 4]
-    compact: true
-    show_meter: false
-    scale: 0.47
-    headroom: 20
-  - type: custom:poubelle-card
-    bin: jaune
-    days: [1]
-    compact: true
-    show_meter: false
-    scale: 0.47
-    headroom: 20
-```
+L'événement est la veille de la collecte (« Sortir les poubelles ») ? Ajoute `calendar_offset: 1`. Avec un capteur, `interval` (jours entre deux collectes) sert à estimer le remplissage.
 
 ### Options
+La liste complète des options est dans le [README anglais](README.en.md#options) ; les noms d'options sont les mêmes. `language: fr` force le français, sinon la carte suit la langue du profil HA.
 
-| Option | Type | Défaut | Description |
-|---|---|---|---|
-| `bin` | texte | **obligatoire** (sauf encombrants) | `grise`, `noire`, `jaune`, `verte`, `bleue`, `marron`, `rouge` (noms anglais acceptés) |
-| `name` | texte | selon la couleur | Titre de la carte |
-| `days` | liste | — | Jours de collecte : nombres (0 = lundi) ou noms (`mardi`, `tuesday`…). Obligatoire sans `entity` |
-| `weeks` | texte | toutes | `paires` / `impaires` (`even` / `odd`) : collecte une semaine sur deux, selon le numéro de semaine ISO |
-| `month_week` | texte / liste | — | Certaines semaines du mois : `1`, `2`, `3`, `4` ou `last` (dernier) jour indiqué dans `days`, ex. 1er mardi ; liste possible : `[2, 4]` (YAML) |
-| `month_day` | nombre | — | Une fois par mois à date fixe (1–31 ; 31 = dernier jour du mois). Remplace `days` |
-| `months` | liste | toute l'année | Mois de collecte : numéros (`5` = mai) ou noms (`mai`, `may`). Se combine avec `days`, `weeks`, `month_week`, `month_day` |
-| `holidays` | texte | `aucun` | Jours fériés français : `report` (collecte reportée au lendemain), `decalage` (à partir du férié, toutes les collectes de la semaine décalées d'un jour), `annule` (pas de collecte) |
-| `region` | texte | `metropole` | `alsace-moselle` ajoute le Vendredi saint et le 26 décembre |
-| `holiday_dates` | liste | — | Dates supplémentaires traitées comme fériées, ex. `["2026-12-24"]` |
-| `entity` | entité | — | Source de la prochaine collecte (voir ci-dessous). Clic = fenêtre d'info |
-| `hour` | nombre | `9` | Heure de passage (décimales acceptées : `6.5` = 6 h 30) |
-| `calendar_filter` | texte / liste | — | Avec un `calendar.*` : ne garde que les événements dont le titre contient ce texte |
-| `calendar_offset` | nombre | `0` | Jours entre l'événement du calendrier et la collecte (`1` si l'événement est la veille) |
-| `interval` | nombre | `7` | Jours entre deux collectes (mode entité uniquement ; inutile avec un calendrier) |
-| `content` | texte | selon la couleur | `ordures`, `recyclables`, `verre`, `papier`, `biodechets` |
-| `color` | couleur CSS | selon la couleur | Couleur de la jauge |
-| `full_color` | booléen | `false` | Colore tout le bac et pas seulement le couvercle |
-| `body_color` | couleur CSS | selon la couleur | Couleur du bac avec `full_color` |
-| `container` | `bac`/`sac`/`encombrants` | `bac` | `sac` : sac poubelle au lieu du conteneur (`bag` accepté) ; `encombrants` : tas d'objets (`bulky` accepté) |
-| `image` | URL | — | Image perso à la place du dessin, ex. `/local/encombrants.png` |
-| `lid_filter` / `body_filter` | filtre CSS | — | Teinte personnalisée, ex. `hue-rotate(90deg)` |
-| `scale` | nombre | `0.62` | Taille de la poubelle |
-| `headroom` | px | `70` | Espace au-dessus (pour le couvercle ouvert) |
-| `compact` | booléen | `false` | Marges réduites |
-| `show_meter` | booléen | `true` | Jauge de remplissage |
-| `show_status` | booléen | `true` | Texte sous la poubelle |
-| `theme_background` | booléen | `false` | Utilise le fond de carte du thème HA |
-| `language` | `auto`/`fr`/`en` | `auto` | Langue |
+## 🔄 Mise à jour depuis 1.x
 
-### Entités prises en charge
-- **Waste Collection Schedule** : attribut `daysTo`
-- `sensor` dont l'état est une **date** (`2026-10-20`), un **horodatage**, un **nombre de jours** (`3`) ou `today`/`tomorrow`/`aujourd'hui`/`demain`
-- `calendar.*` : événements des 60 derniers et 60 prochains jours, filtrables par titre (`calendar_filter`)
-- `input_datetime` (avec date)
+Les tableaux de bord existants continuent de fonctionner : les valeurs françaises (`noire`, `sac`, `paires`, `report`, `annule`…) restent acceptées, et l'éditeur visuel les affiche avec leur équivalent anglais.
 
-### Personnaliser via card-mod / thème
-Variables CSS : `--poubelle-card-background`, `--poubelle-card-border-color`, `--poubelle-card-text-color`, `--poubelle-card-secondary-color`.
-
----
-
-## 🇬🇧 English
-
-Animated bin card: the bin fills up over the week, shakes the evening before pickup, hops on pickup day and sparkles once emptied.
-
-**Install:** HACS → ⋮ → Custom repositories → `https://github.com/skyrotter/ha-poubelle-card` (type *Dashboard*) → download **Poubelle Card**. Manual: copy `poubelle-card.js` to `/config/www/` and add `/local/poubelle-card.js` as a JavaScript module resource.
-
-```yaml
-type: custom:poubelle-card
-bin: yellow          # grey, black, yellow, green, blue, brown, red
-days: [tuesday]      # or [1] — 0 = Monday
-hour: 9              # truck pickup hour
-# weeks: even        # every other week: even / odd ISO weeks
-# holidays: report    # French public holidays: report | decalage | annule
-# month_week: 1       # once a month: 1st..4th or last given weekday; or a list: [2, 4]
-# month_day: 15       # once a month on a fixed date
-# entity: sensor.next_yellow_pickup   # date / days-left / calendar / Waste Collection Schedule
-# interval: 14
-# calendar_filter: Recycling   # with a calendar.* entity: only events whose title contains this text
-# calendar_offset: 1           # the calendar event is the day before pickup
-# full_color: true    # paint the whole bin, not just the lid
-# container: bag      # rubbish bag instead of a wheelie bin (or bulky: pile of bulky waste)
-# image: /local/my-bin.png     # your own picture instead of the drawing
-# months: [5, 6, 7, 8, 9, 10]  # seasonal pickups: May to October only
-```
-
-All options are listed in the table above (`language: en` forces English; otherwise it follows your HA profile language).
+- **Home Assistant 2026.1** minimum.
+- Les **jours fériés** viennent maintenant de l'intégration Holiday au lieu de la liste française intégrée ; `region` n'est plus utilisé (choisis la région dans l'intégration Holiday).
+- **`holidays: next_day` signifie maintenant le lendemain.** L'ancien comportement (jour suivant non férié et non dimanche) s'appelle `next_work_day` ; `report` et `shift` y correspondent.
+- `decalage` s'appelle désormais `shift_rest_of_week` (même comportement). `shift_week` est nouveau : la collecte est reportée d'une semaine.
 
 ## 📄 Licence
 MIT
