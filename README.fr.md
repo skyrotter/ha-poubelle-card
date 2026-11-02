@@ -10,7 +10,7 @@
 
 Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des jours, tremble la veille de la collecte, saute le jour J et brille une fois vidée.
 
-![Aperçu](preview.gif)
+![Aperçu](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/fr/preview.gif)
 
 ## ✨ Fonctionnalités
 
@@ -96,7 +96,7 @@ bin: blue
 days: [mardi]
 full_color: true
 ```
-![Bacs entièrement colorés](preview-full-color.png)
+![Bacs entièrement colorés](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/fr/preview-full-color.png)
 
 ### Sac poubelle (communes sans conteneurs)
 ```yaml
@@ -105,7 +105,7 @@ bin: yellow
 container: bag
 days: [jeudi]
 ```
-![Sacs poubelles](preview-sacs.png)
+![Sacs poubelles](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/fr/preview-sacs.png)
 
 ### Encombrants
 ```yaml

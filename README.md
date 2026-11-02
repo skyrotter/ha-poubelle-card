@@ -13,7 +13,7 @@
 
 Animated Lovelace card for bin collection days: the bin fills up over the cycle, shakes the evening before pickup, hops on pickup day and sparkles once emptied.
 
-![Preview](preview.gif)
+![Preview](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/en/preview.gif)
 
 ## ✨ Features
 
@@ -113,7 +113,7 @@ bin: blue
 days: [tuesday]
 full_color: true
 ```
-![Fully coloured bins](preview-full-color.png)
+![Fully coloured bins](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/en/preview-full-color.png)
 
 ### Rubbish bag
 A tied bag replaces the wheelie bin. It is flat at the start of the cycle and fills out until pickup day. The yellow bag is translucent, like recycling bags.
@@ -123,7 +123,7 @@ bin: yellow
 container: bag
 days: [thursday]
 ```
-![Rubbish bags](preview-sacs.png)
+![Rubbish bags](https://raw.githubusercontent.com/Roving-Ronin/ha-garbage-card/main/images/en/preview-sacs.png)
 
 ### Bulky waste
 A pile of items (fridge, mattress, TV, tyre, box…) that grows until pickup day. `bin` is optional (grey meter by default).
@@ -291,6 +291,7 @@ npm install
 npm test          # scheduling logic + translation files
 npm run build     # src/ → dist/poubelle-card.js
 npm run watch     # rebuild on change
+npm run screenshots  # README images in images/<lang>/ (needs Chrome and ffmpeg)
 ```
 Edit files in `src/`, never `dist/` directly; commit the rebuilt `dist/poubelle-card.js` with your change (CI checks it is up to date). Releases attach `dist/poubelle-card.js` automatically; the release tag must match the version in `package.json`.
 
