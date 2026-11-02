@@ -31,7 +31,7 @@ jobs:
       - name: Test and build
         run: |
           npm ci
-          TZ=Australia/Sydney npm test
+          TZ=Europe/Paris npm test
           npm run build
 
       - name: Attach the card to the release
