@@ -25,7 +25,7 @@ Animated Lovelace card for bin collection days: the bin fills up over the cycle,
 | **Pickup** | pickup day, before the truck | the bin hops |
 | **Emptied** | pickup day, after the truck | sparkles ✨, green border |
 
-- 7 colours: `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red`
+- 10 colours: `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red`, `purple`, `burgundy`, `lime`
 - **Fully coloured bin** (`full_color: true`) or coloured lid only
 - **Rubbish bag** (`container: bag`) and **bulky waste** pile (`container: bulky`), or your own picture (`image`)
 - Schedules: weekly, **every N weeks from a start date** (fortnightly, four-weekly…), even/odd weeks, once a month, seasonal months
@@ -58,6 +58,18 @@ bin: red
 name: General waste
 days: [tuesday, friday]   # or [1, 4] (0 = Monday … 6 = Sunday)
 hour: 6                   # time the truck comes
+```
+
+### Australian bins
+Typical lids: `red` general waste, `yellow` recycling, `lime` garden or FOGO, `burgundy` food / FOGO, `purple` glass, `blue` paper. Councils differ, so pick the colour of your lid and set `content` for what goes in it.
+```yaml
+type: custom:poubelle-card
+bin: lime
+name: FOGO
+content: organics
+start_date: 2026-11-04
+every: 2
+full_color: true
 ```
 
 ### Every N weeks from a start date (fortnightly recycling)
@@ -217,7 +229,7 @@ cards:
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `bin` | text | **required** (except bulky) | `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red` |
+| `bin` | text | **required** (except bulky) | `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red`, `purple`, `burgundy`, `lime` |
 | `name` | text | from the colour | Card title |
 | `days` | list | — | Pickup days: numbers (0 = Monday) or names (`tuesday`, `tue`). Required unless `start_date`, `month_day` or `entity` is set |
 | `start_date` | date | — | A known pickup date; pickups repeat every `every` weeks from it. Overrides `weeks` |
@@ -235,7 +247,7 @@ cards:
 | `calendar_filter` | text / list | — | With a `calendar.*` entity: only events whose title contains this text |
 | `calendar_offset` | number | `0` | Days between the calendar event and the pickup (`1` if the event is the day before) |
 | `interval` | number | `7` | Days between pickups (sensor entities only, for the fill level) |
-| `content` | text | from the colour | `rubbish`, `recycling`, `glass`, `paper`, `organics` |
+| `content` | text | from the colour | What sticks out when full: `rubbish`, `recycling`, `glass`, `paper`, `organics`. Colours mean different things in different councils, so set this to match yours |
 | `color` | CSS colour | from the colour | Meter colour |
 | `full_color` | boolean | `false` | Colour the whole bin, not just the lid |
 | `body_color` | CSS colour | from the colour | Bin colour with `full_color` |

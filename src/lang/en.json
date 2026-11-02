@@ -1,8 +1,8 @@
 {
   "language_name": "English",
   "card": {
-    "bin": { "grey": "Grey bin", "black": "Black bin", "yellow": "Yellow bin", "green": "Green bin", "blue": "Blue bin", "brown": "Brown bin", "red": "Red bin" },
-    "bag": { "grey": "Grey bag", "black": "Black bag", "yellow": "Yellow bag", "green": "Green bag", "blue": "Blue bag", "brown": "Brown bag", "red": "Red bag" },
+    "bin": { "grey": "Grey bin", "black": "Black bin", "yellow": "Yellow bin", "green": "Green bin", "blue": "Blue bin", "brown": "Brown bin", "red": "Red bin", "purple": "Purple bin", "burgundy": "Burgundy bin", "lime": "Lime green bin" },
+    "bag": { "grey": "Grey bag", "black": "Black bag", "yellow": "Yellow bag", "green": "Green bag", "blue": "Blue bag", "brown": "Brown bag", "red": "Red bag", "purple": "Purple bag", "burgundy": "Burgundy bag", "lime": "Lime green bag" },
     "bulky": "Bulky waste",
     "emptied": "Emptied",
     "emptied_txt": "Emptied today ✅",
@@ -61,9 +61,24 @@
       "interval": "Only used with a sensor entity, to estimate the fill level."
     },
     "options": {
-      "container": { "wheelie_bin": "Wheelie bin", "bag": "Rubbish bag", "bulky": "Bulky waste" },
-      "weeks": { "all": "Every week", "even": "Even weeks", "odd": "Odd weeks" },
-      "month_week": { "": "Every week", "1": "1st of the month", "2": "2nd of the month", "3": "3rd of the month", "4": "4th of the month", "last": "Last of the month" },
+      "container": {
+        "wheelie_bin": "Wheelie bin",
+        "bag": "Rubbish bag",
+        "bulky": "Bulky waste"
+      },
+      "weeks": {
+        "all": "Every week",
+        "even": "Even weeks",
+        "odd": "Odd weeks"
+      },
+      "month_week": {
+        "": "Every week",
+        "1": "1st of the month",
+        "2": "2nd of the month",
+        "3": "3rd of the month",
+        "4": "4th of the month",
+        "last": "Last of the month"
+      },
       "holidays": {
         "none": "Ignore holidays",
         "next_day": "Move to the next day",
@@ -72,7 +87,9 @@
         "shift_rest_of_week": "Rest of the week moves +1 day",
         "cancel": "Cancelled"
       },
-      "language": { "auto": "Automatic (Home Assistant language)" }
+      "language": {
+        "auto": "Automatic (Home Assistant language)"
+      }
     }
   },
   "errors": {

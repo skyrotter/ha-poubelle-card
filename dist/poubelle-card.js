@@ -18,7 +18,10 @@ var PB_BINS = {
   green: { img: "yellow", color: "#4caf50", content: "glass", paint: "#2f9e44", lid: "hue-rotate(68deg) saturate(.85) brightness(.8)" },
   blue: { img: "yellow", color: "#42a5f5", content: "paper", paint: "#1e6fd9", lid: "hue-rotate(165deg) saturate(1.1) brightness(.85)" },
   brown: { img: "yellow", color: "#a1887f", content: "organics", paint: "#8a5a2b", lid: "hue-rotate(-14deg) saturate(.75) brightness(.5)" },
-  red: { img: "yellow", color: "#ef5350", content: "rubbish", paint: "#d32f2f", lid: "hue-rotate(-40deg) saturate(1.4) brightness(.85)" }
+  red: { img: "yellow", color: "#ef5350", content: "rubbish", paint: "#d32f2f", lid: "hue-rotate(-40deg) saturate(1.4) brightness(.85)" },
+  purple: { img: "yellow", color: "#ab47bc", content: "glass", paint: "#7b2fa8", lid: "hue-rotate(-140deg) saturate(1.2) brightness(.7)" },
+  burgundy: { img: "yellow", color: "#b0415a", content: "organics", paint: "#7a1f35", paintBody: "brightness(.55)", lid: "hue-rotate(-75deg) saturate(1.5) brightness(.45)" },
+  lime: { img: "yellow", color: "#9ccc3c", content: "organics", paint: "#8cc63f", lid: "hue-rotate(40deg) saturate(1.1) brightness(1)" }
 };
 var PB_BODY_RATIO = { grey: "190/295", yellow: "190/291" };
 var PB_WHEEL_HOLE = "radial-gradient(ellipse 10% 15% at 89% 82%, transparent 96%, #000 100%)";
@@ -29,7 +32,10 @@ var PB_BAG_COLORS = {
   green: ["#2f9e44", 0.9],
   blue: ["#2f6fd6", 0.85],
   brown: ["#7a4a26", 1],
-  red: ["#d32f2f", 0.92]
+  red: ["#d32f2f", 0.92],
+  purple: ["#7b2fa8", 0.9],
+  burgundy: ["#7a1f35", 1],
+  lime: ["#8cc63f", 0.85]
 };
 var pbBagSvg = (col, op, content) => `<svg class="bagsvg" viewBox="0 0 150 253" aria-hidden="true">
  <defs><clipPath id="pbbag"><path d="M28 250 C8 248 6 196 14 150 C20 112 40 92 60 86 L90 86 C110 92 130 112 136 150 C144 196 142 248 122 250 Z"/></clipPath>
@@ -119,9 +125,12 @@ var BIN_ALIASES = table({
   green: ["verte", "vert"],
   blue: ["bleue", "bleu"],
   brown: ["marron", "brune", "brun"],
-  red: ["rouge"]
+  red: ["rouge"],
+  purple: ["violet", "violette", "mauve"],
+  burgundy: ["maroon", "bordeaux"],
+  lime: ["lime_green", "lime-green", "citron_vert", "vert_clair"]
 });
-var BINS = ["grey", "black", "yellow", "green", "blue", "brown", "red"];
+var BINS = ["grey", "black", "yellow", "green", "blue", "brown", "red", "purple", "burgundy", "lime"];
 var CONTAINER_ALIASES = table({
   wheelie_bin: ["bac", "bin", "wheelie", "conteneur"],
   bag: ["bags", "sac", "sacs"],
@@ -386,8 +395,8 @@ function eventDays(events) {
 var en_default = {
   language_name: "English",
   card: {
-    bin: { grey: "Grey bin", black: "Black bin", yellow: "Yellow bin", green: "Green bin", blue: "Blue bin", brown: "Brown bin", red: "Red bin" },
-    bag: { grey: "Grey bag", black: "Black bag", yellow: "Yellow bag", green: "Green bag", blue: "Blue bag", brown: "Brown bag", red: "Red bag" },
+    bin: { grey: "Grey bin", black: "Black bin", yellow: "Yellow bin", green: "Green bin", blue: "Blue bin", brown: "Brown bin", red: "Red bin", purple: "Purple bin", burgundy: "Burgundy bin", lime: "Lime green bin" },
+    bag: { grey: "Grey bag", black: "Black bag", yellow: "Yellow bag", green: "Green bag", blue: "Blue bag", brown: "Brown bag", red: "Red bag", purple: "Purple bag", burgundy: "Burgundy bag", lime: "Lime green bag" },
     bulky: "Bulky waste",
     emptied: "Emptied",
     emptied_txt: "Emptied today ✅",
@@ -446,9 +455,24 @@ var en_default = {
       interval: "Only used with a sensor entity, to estimate the fill level."
     },
     options: {
-      container: { wheelie_bin: "Wheelie bin", bag: "Rubbish bag", bulky: "Bulky waste" },
-      weeks: { all: "Every week", even: "Even weeks", odd: "Odd weeks" },
-      month_week: { "": "Every week", "1": "1st of the month", "2": "2nd of the month", "3": "3rd of the month", "4": "4th of the month", last: "Last of the month" },
+      container: {
+        wheelie_bin: "Wheelie bin",
+        bag: "Rubbish bag",
+        bulky: "Bulky waste"
+      },
+      weeks: {
+        all: "Every week",
+        even: "Even weeks",
+        odd: "Odd weeks"
+      },
+      month_week: {
+        "": "Every week",
+        "1": "1st of the month",
+        "2": "2nd of the month",
+        "3": "3rd of the month",
+        "4": "4th of the month",
+        last: "Last of the month"
+      },
       holidays: {
         none: "Ignore holidays",
         next_day: "Move to the next day",
@@ -457,7 +481,9 @@ var en_default = {
         shift_rest_of_week: "Rest of the week moves +1 day",
         cancel: "Cancelled"
       },
-      language: { auto: "Automatic (Home Assistant language)" }
+      language: {
+        auto: "Automatic (Home Assistant language)"
+      }
     }
   },
   errors: {
@@ -473,8 +499,8 @@ var en_default = {
 var fr_default = {
   language_name: "Français",
   card: {
-    bin: { grey: "Poubelle grise", black: "Poubelle noire", yellow: "Poubelle jaune", green: "Poubelle verte", blue: "Poubelle bleue", brown: "Poubelle marron", red: "Poubelle rouge" },
-    bag: { grey: "Sac gris", black: "Sac noir", yellow: "Sac jaune", green: "Sac vert", blue: "Sac bleu", brown: "Sac marron", red: "Sac rouge" },
+    bin: { grey: "Poubelle grise", black: "Poubelle noire", yellow: "Poubelle jaune", green: "Poubelle verte", blue: "Poubelle bleue", brown: "Poubelle marron", red: "Poubelle rouge", purple: "Poubelle violette", burgundy: "Poubelle bordeaux", lime: "Poubelle vert citron" },
+    bag: { grey: "Sac gris", black: "Sac noir", yellow: "Sac jaune", green: "Sac vert", blue: "Sac bleu", brown: "Sac marron", red: "Sac rouge", purple: "Sac violet", burgundy: "Sac bordeaux", lime: "Sac vert citron" },
     bulky: "Encombrants",
     emptied: "Vidée",
     emptied_txt: "Vidée aujourd'hui ✅",
@@ -533,9 +559,24 @@ var fr_default = {
       interval: "Utilisé seulement avec une entité capteur, pour estimer le remplissage."
     },
     options: {
-      container: { wheelie_bin: "Conteneur à roulettes", bag: "Sac poubelle", bulky: "Encombrants" },
-      weeks: { all: "Toutes les semaines", even: "Semaines paires", odd: "Semaines impaires" },
-      month_week: { "": "Chaque semaine", "1": "1er du mois", "2": "2e du mois", "3": "3e du mois", "4": "4e du mois", last: "Dernier du mois" },
+      container: {
+        wheelie_bin: "Conteneur à roulettes",
+        bag: "Sac poubelle",
+        bulky: "Encombrants"
+      },
+      weeks: {
+        all: "Toutes les semaines",
+        even: "Semaines paires",
+        odd: "Semaines impaires"
+      },
+      month_week: {
+        "": "Chaque semaine",
+        "1": "1er du mois",
+        "2": "2e du mois",
+        "3": "3e du mois",
+        "4": "4e du mois",
+        last: "Dernier du mois"
+      },
       holidays: {
         none: "Jours fériés ignorés",
         next_day: "Reportée au lendemain",
@@ -544,7 +585,9 @@ var fr_default = {
         shift_rest_of_week: "Décalage d'un jour jusqu'à la fin de la semaine",
         cancel: "Annulée"
       },
-      language: { auto: "Automatique (langue de Home Assistant)" }
+      language: {
+        auto: "Automatique (langue de Home Assistant)"
+      }
     }
   },
   errors: {
@@ -560,8 +603,8 @@ var fr_default = {
 var sr_default = {
   language_name: "Српски",
   card: {
-    bin: { grey: "Сива канта", black: "Црна канта", yellow: "Жута канта", green: "Зелена канта", blue: "Плава канта", brown: "Браон канта", red: "Црвена канта" },
-    bag: { grey: "Сива врећа", black: "Црна врећа", yellow: "Жута врећа", green: "Зелена врећа", blue: "Плава врећа", brown: "Браон врећа", red: "Црвена врећа" },
+    bin: { grey: "Сива канта", black: "Црна канта", yellow: "Жута канта", green: "Зелена канта", blue: "Плава канта", brown: "Браон канта", red: "Црвена канта", purple: "Љубичаста канта", burgundy: "Бордо канта", lime: "Светлозелена канта" },
+    bag: { grey: "Сива врећа", black: "Црна врећа", yellow: "Жута врећа", green: "Зелена врећа", blue: "Плава врећа", brown: "Браон врећа", red: "Црвена врећа", purple: "Љубичаста врећа", burgundy: "Бордо врећа", lime: "Светлозелена врећа" },
     bulky: "Кабасти отпад",
     emptied: "Испражњено",
     emptied_txt: "Испражњено данас ✅",
@@ -620,9 +663,24 @@ var sr_default = {
       interval: "Користи се само са сензором, за процену попуњености."
     },
     options: {
-      container: { wheelie_bin: "Канта на точковима", bag: "Врећа за смеће", bulky: "Кабасти отпад" },
-      weeks: { all: "Сваке недеље", even: "Парне недеље", odd: "Непарне недеље" },
-      month_week: { "": "Сваке недеље", "1": "1. у месецу", "2": "2. у месецу", "3": "3. у месецу", "4": "4. у месецу", last: "Последњи у месецу" },
+      container: {
+        wheelie_bin: "Канта на точковима",
+        bag: "Врећа за смеће",
+        bulky: "Кабасти отпад"
+      },
+      weeks: {
+        all: "Сваке недеље",
+        even: "Парне недеље",
+        odd: "Непарне недеље"
+      },
+      month_week: {
+        "": "Сваке недеље",
+        "1": "1. у месецу",
+        "2": "2. у месецу",
+        "3": "3. у месецу",
+        "4": "4. у месецу",
+        last: "Последњи у месецу"
+      },
       holidays: {
         none: "Занемари празнике",
         next_day: "Помери на следећи дан",
@@ -631,7 +689,9 @@ var sr_default = {
         shift_rest_of_week: "Остатак недеље се помера за 1 дан",
         cancel: "Отказано"
       },
-      language: { auto: "Аутоматски (језик Home Assistant-а)" }
+      language: {
+        auto: "Аутоматски (језик Home Assistant-а)"
+      }
     }
   },
   errors: {
@@ -654,7 +714,10 @@ var sr_Latn_default = {
       green: "Zelena kanta",
       blue: "Plava kanta",
       brown: "Braon kanta",
-      red: "Crvena kanta"
+      red: "Crvena kanta",
+      purple: "Ljubičasta kanta",
+      burgundy: "Bordo kanta",
+      lime: "Svetlozelena kanta"
     },
     bag: {
       grey: "Siva vreća",
@@ -663,7 +726,10 @@ var sr_Latn_default = {
       green: "Zelena vreća",
       blue: "Plava vreća",
       brown: "Braon vreća",
-      red: "Crvena vreća"
+      red: "Crvena vreća",
+      purple: "Ljubičasta vreća",
+      burgundy: "Bordo vreća",
+      lime: "Svetlozelena vreća"
     },
     bulky: "Kabasti otpad",
     emptied: "Ispražnjeno",
@@ -1080,9 +1146,9 @@ var PoubelleCard = class extends HTMLElement {
     const c = this._c, s = Number(c.scale), hr = Number(c.headroom ?? 70), B = PB_BINS[this._bin];
     const color = c.color || B.color;
     const content = PB_CONTENT[CONTENT_ALIASES[c.content] || c.content] || PB_CONTENT[B.content];
-    const bodyF = c.body_filter || B.body || "", lidF = c.lid_filter || B.lid || "";
     const img = String(c.image || "").trim();
     const paint = c.full_color && !this._bag && !this._bulky && !img ? c.body_color || B.paint || "" : "";
+    const bodyF = c.body_filter || paint && !c.body_color && B.paintBody || B.body || "", lidF = c.lid_filter || B.lid || "";
     const [bagCol, bagOp] = PB_BAG_COLORS[this._bin];
     const bodyImg = PB_IMG[B.img].body;
     if (!this.shadowRoot) this.attachShadow({ mode: "open" });

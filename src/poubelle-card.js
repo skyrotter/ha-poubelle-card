@@ -113,11 +113,12 @@ class PoubelleCard extends HTMLElement {
     const c = this._c, s = Number(c.scale), hr = Number(c.headroom ?? 70), B = PB_BINS[this._bin];
     const color = c.color || B.color;
     const content = PB_CONTENT[CONTENT_ALIASES[c.content] || c.content] || PB_CONTENT[B.content];
-    const bodyF = c.body_filter || B.body || '', lidF = c.lid_filter || B.lid || '';
     // full_color : tout le bac prend la couleur (et pas seulement le couvercle). Une couche de la couleur,
     // découpée à la forme du corps, colorise le gris en gardant ses ombres et ses reflets (mix-blend-mode: color).
     const img = String(c.image || '').trim();
     const paint = c.full_color && !this._bag && !this._bulky && !img ? (c.body_color || B.paint || '') : '';
+    // dark colours (burgundy) darken the grey body under the paint, which only sets hue and saturation
+    const bodyF = c.body_filter || (paint && !c.body_color && B.paintBody) || B.body || '', lidF = c.lid_filter || B.lid || '';
     const [bagCol, bagOp] = PB_BAG_COLORS[this._bin];
     const bodyImg = PB_IMG[B.img].body;
     if (!this.shadowRoot) this.attachShadow({ mode: 'open' });

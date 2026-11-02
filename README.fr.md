@@ -22,7 +22,7 @@ Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des j
 | **Collecte** | jour J, avant l'heure de passage | la poubelle sautille |
 | **Vidée** | jour J, après l'heure de passage | étincelles ✨, bordure verte |
 
-- 7 couleurs : `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red` (les noms français `grise`, `noire`, `jaune`… restent acceptés)
+- 10 couleurs : `grey`, `black`, `yellow`, `green`, `blue`, `brown`, `red`, `purple`, `burgundy`, `lime` (les noms français `grise`, `noire`, `jaune`, `violette`, `bordeaux`… restent acceptés)
 - **Bac entièrement coloré** (`full_color: true`) ou couvercle seul
 - **Sac poubelle** (`container: bag`), **encombrants** (`container: bulky`) ou ta propre image (`image`)
 - Plannings : chaque semaine, **toutes les N semaines à partir d'une date**, semaines paires / impaires, une fois par mois, collectes saisonnières

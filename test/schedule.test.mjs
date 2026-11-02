@@ -121,3 +121,8 @@ test('eventDays: all-day end is exclusive, multi-day expands, timed events count
   ]);
   assert.deepEqual([...s].sort(), ['2026-11-03', '2026-12-25', '2027-01-01', '2027-01-02']);
 });
+
+test('new colours and their aliases', () => {
+  for (const [v, exp] of [['purple', 'purple'], ['violette', 'purple'], ['Burgundy', 'burgundy'], ['bordeaux', 'burgundy'],
+    ['maroon', 'burgundy'], ['lime', 'lime'], ['lime_green', 'lime']]) assert.equal(normalizeConfig({ bin: v }).bin, exp, v);
+});

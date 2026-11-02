@@ -15,6 +15,9 @@ export const PB_BINS = {
   blue:  { img: 'yellow', color: '#42a5f5', content: 'paper', paint: '#1e6fd9', lid: 'hue-rotate(165deg) saturate(1.1) brightness(.85)' },
   brown: { img: 'yellow', color: '#a1887f', content: 'organics', paint: '#8a5a2b', lid: 'hue-rotate(-14deg) saturate(.75) brightness(.5)' },
   red:  { img: 'yellow', color: '#ef5350', content: 'rubbish', paint: '#d32f2f', lid: 'hue-rotate(-40deg) saturate(1.4) brightness(.85)' },
+  purple: { img: 'yellow', color: '#ab47bc', content: 'glass', paint: '#7b2fa8', lid: 'hue-rotate(-140deg) saturate(1.2) brightness(.7)' },
+  burgundy: { img: 'yellow', color: '#b0415a', content: 'organics', paint: '#7a1f35', paintBody: 'brightness(.55)', lid: 'hue-rotate(-75deg) saturate(1.5) brightness(.45)' },
+  lime: { img: 'yellow', color: '#9ccc3c', content: 'organics', paint: '#8cc63f', lid: 'hue-rotate(40deg) saturate(1.1) brightness(1)' },
 };
 /* proportions des images de corps (largeur / hauteur), pour caler la peinture de full_color */
 export const PB_BODY_RATIO = { grey: '190/295', yellow: '190/291' };
@@ -25,6 +28,7 @@ export const PB_WHEEL_HOLE = 'radial-gradient(ellipse 10% 15% at 89% 82%, transp
 export const PB_BAG_COLORS = {
   grey: ['#5b6270', 1], black: ['#1f2328', 1], yellow: ['#f5c518', .7], green: ['#2f9e44', .9],
   blue: ['#2f6fd6', .85], brown: ['#7a4a26', 1], red: ['#d32f2f', .92],
+  purple: ['#7b2fa8', .9], burgundy: ['#7a1f35', 1], lime: ['#8cc63f', .85],
 };
 /* sac noué vu de face, dans le même cadre 150 × 253 que la poubelle ; le contenu se devine dans un sac translucide */
 export const pbBagSvg = (col, op, content) => `<svg class="bagsvg" viewBox="0 0 150 253" aria-hidden="true">

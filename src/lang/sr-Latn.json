@@ -8,7 +8,10 @@
       "green": "Zelena kanta",
       "blue": "Plava kanta",
       "brown": "Braon kanta",
-      "red": "Crvena kanta"
+      "red": "Crvena kanta",
+      "purple": "Ljubičasta kanta",
+      "burgundy": "Bordo kanta",
+      "lime": "Svetlozelena kanta"
     },
     "bag": {
       "grey": "Siva vreća",
@@ -17,7 +20,10 @@
       "green": "Zelena vreća",
       "blue": "Plava vreća",
       "brown": "Braon vreća",
-      "red": "Crvena vreća"
+      "red": "Crvena vreća",
+      "purple": "Ljubičasta vreća",
+      "burgundy": "Bordo vreća",
+      "lime": "Svetlozelena vreća"
     },
     "bulky": "Kabasti otpad",
     "emptied": "Ispražnjeno",
