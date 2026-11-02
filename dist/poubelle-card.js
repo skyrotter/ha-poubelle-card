@@ -18,7 +18,7 @@ var PB_BINS = {
   green: { img: "yellow", color: "#4caf50", content: "glass", paint: "#2f9e44", lid: "hue-rotate(68deg) saturate(.85) brightness(.8)" },
   blue: { img: "yellow", color: "#42a5f5", content: "paper", paint: "#1e6fd9", lid: "hue-rotate(165deg) saturate(1.1) brightness(.85)" },
   brown: { img: "yellow", color: "#a1887f", content: "organics", paint: "#8a5a2b", lid: "hue-rotate(-14deg) saturate(.75) brightness(.5)" },
-  red: { img: "yellow", color: "#ef5350", content: "rubbish", paint: "#d32f2f", lid: "hue-rotate(-40deg) saturate(1.4) brightness(.85)" },
+  red: { img: "yellow", color: "#ef5350", content: "rubbish", paint: "#d32f2f", lid: "hue-rotate(-62deg) saturate(2.6) brightness(.72)" },
   purple: { img: "yellow", color: "#ab47bc", content: "glass", paint: "#7b2fa8", lid: "hue-rotate(-140deg) saturate(1.2) brightness(.7)" },
   burgundy: { img: "yellow", color: "#b0415a", content: "organics", paint: "#7a1f35", paintBody: "brightness(.55)", lid: "hue-rotate(-75deg) saturate(1.5) brightness(.45)" },
   lime: { img: "yellow", color: "#9ccc3c", content: "organics", paint: "#8cc63f", lid: "hue-rotate(40deg) saturate(1.1) brightness(1)" }
