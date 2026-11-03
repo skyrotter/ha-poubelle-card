@@ -13,7 +13,7 @@ const options = {
   charset: 'utf8',
   legalComments: 'inline',
   define: { __VERSION__: JSON.stringify(version) },
-  banner: { js: `/*! poubelle-card v${version} | https://github.com/Roving-Ronin/ha-garbage-card | MIT | built from src/ — edit there, not here */` },
+  banner: { js: `/*! poubelle-card v${version} | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */` },
   logLevel: 'info',
 };
 
