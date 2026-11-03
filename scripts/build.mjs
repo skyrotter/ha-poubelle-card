@@ -2,7 +2,9 @@
 import { readFileSync } from 'node:fs';
 import * as esbuild from 'esbuild';
 
-const { version } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url)));
+// The version lives in src/poubelle-card.js (PB_VERSION), set from the release tag by .github/workflows/release.yml
+const version = readFileSync(new URL('../src/poubelle-card.js', import.meta.url), 'utf8').match(/^const PB_VERSION = '([^']*)';/m)?.[1];
+if (!version) throw new Error("PB_VERSION not found in src/poubelle-card.js");
 
 const options = {
   entryPoints: ['src/poubelle-card.js'],
@@ -12,7 +14,6 @@ const options = {
   target: 'es2020',
   charset: 'utf8',
   legalComments: 'inline',
-  define: { __VERSION__: JSON.stringify(version) },
   banner: { js: `/*! poubelle-card v${version} | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */` },
   logLevel: 'info',
 };

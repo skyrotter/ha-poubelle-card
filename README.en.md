@@ -293,7 +293,7 @@ npm run build     # src/ → dist/poubelle-card.js
 npm run watch     # rebuild on change
 npm run screenshots  # README images in images/<lang>/ (needs Chrome and ffmpeg)
 ```
-Edit files in `src/`, never `dist/` directly; commit the rebuilt `dist/poubelle-card.js` with your change (CI checks it is up to date). Releases attach `dist/poubelle-card.js` automatically; the release tag must match the version in `package.json`.
+Edit files in `src/`, never `dist/` directly; commit the rebuilt `dist/poubelle-card.js` with your change (CI checks it is up to date). **Releasing:** publish a GitHub release with a tag like `v2.1.0`. The tag is the version: the release workflow writes it into the card, builds and attaches `poubelle-card.js` to the release, and commits the new version back to `main`. Nobody edits the version by hand.
 
 ## 📄 Licence
 MIT

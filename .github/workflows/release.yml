@@ -1,5 +1,13 @@
-name: Release assets
+name: Release
 
+# Runs when a GitHub release is published. The release tag is the version:
+#   1. Takes the version from the tag (v2.1.0 -> 2.1.0).
+#   2. Writes it into the card (PB_VERSION in src/poubelle-card.js, shown in the
+#      browser console and the header of the built file), tests, builds
+#      dist/poubelle-card.js and attaches it to the release. HACS installs the
+#      release asset first, and the download badge counts it.
+#   3. Commits the same version (src/ and the rebuilt dist/) back to the default
+#      branch, so the repo stays in step. Nobody needs to edit the version by hand.
 on:
   release:
     types: [published]
@@ -7,8 +15,13 @@ on:
 permissions:
   contents: write
 
+env:
+  SRC: src/poubelle-card.js
+  CARD: dist/poubelle-card.js
+
 jobs:
-  upload-assets:
+  release:
+    name: Build and attach poubelle-card.js
     runs-on: ubuntu-latest
     steps:
       - name: Check out the release tag
@@ -19,25 +32,68 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Check the tag matches package.json
+      - name: Version from the release tag
+        env:
+          TAG: ${{ github.event.release.tag_name }}
         run: |
-          TAG="${{ github.event.release.tag_name }}"
-          PKG="$(node -p "require('./package.json').version")"
-          if [ "${TAG#v}" != "$PKG" ]; then
-            echo "::error::Release tag $TAG does not match package.json version $PKG"
+          VERSION="${TAG#v}"
+          if ! echo "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([.-]?(a|b|rc|beta|dev)[0-9]*)?$'; then
+            echo "::error::Release tag '$TAG' isn't a version. Use a tag like v2.1.0 (or 2.1.0, v2.1.0b1)."
             exit 1
           fi
+          echo "Release version: $VERSION"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Write the version into the card
+        run: |
+          sed -i -E "s/^const PB_VERSION = '[^']*';/const PB_VERSION = '${VERSION}';/" "$SRC"
+          grep -q "^const PB_VERSION = '${VERSION}';" "$SRC" || { echo "::error::Couldn't set PB_VERSION in $SRC"; exit 1; }
 
       - name: Test and build
         run: |
           npm ci
           TZ=Europe/Paris npm test
           npm run build
+          grep -q "var PB_VERSION = \"${VERSION}\";" "$CARD" || { echo "::error::$CARD doesn't carry version $VERSION"; exit 1; }
+          node --check "$CARD"
 
       - name: Attach the card to the release
         env:
           GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" "$CARD" --clobber
+
+  sync-version:
+    name: Commit the version to ${{ github.event.repository.default_branch }}
+    needs: release
+    runs-on: ubuntu-latest
+    # Pre-releases (e.g. betas) don't move the default branch's version
+    if: ${{ !github.event.release.prerelease }}
+    steps:
+      - name: Check out the default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Commit the card version if it changed
+        env:
+          TAG: ${{ github.event.release.tag_name }}
         run: |
-          gh release upload "${{ github.event.release.tag_name }}" \
-            dist/poubelle-card.js \
-            --clobber
+          VERSION="${TAG#v}"
+          sed -i -E "s/^const PB_VERSION = '[^']*';/const PB_VERSION = '${VERSION}';/" "$SRC"
+          if git diff --quiet -- "$SRC"; then
+            echo "Card already at $VERSION"
+            exit 0
+          fi
+          npm ci
+          npm run build
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -q -m "Set card version to $VERSION (release $TAG)" -- "$SRC" "$CARD"
+          if ! git push -q origin "HEAD:${{ github.event.repository.default_branch }}"; then
+            echo "::warning::Couldn't push the version bump (branch protection?). The release asset is correct; src/ and dist/ on the default branch still show the old version."
+          fi
