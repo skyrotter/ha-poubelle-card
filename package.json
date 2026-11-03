@@ -1,6 +1,5 @@
 {
   "name": "ha-poubelle-card",
-  "version": "2.0.0",
   "description": "Animated Lovelace card for bin collection days (Home Assistant, HACS)",
   "private": true,
   "type": "module",

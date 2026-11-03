@@ -10,7 +10,8 @@ import { cardLanguage, haLanguage, resolveLang, t, weekdayName, shortDate } from
 import { findCalendar, calendarDays } from './calendars.js';
 import './editor.js';
 
-const PB_VERSION = __VERSION__;
+// Set by the release workflow from the release tag (v2.1.0 -> '2.1.0'); don't edit by hand.
+const PB_VERSION = '2.0.0';
 const CONTENT_ALIASES = { ordures: 'rubbish', recyclables: 'recycling', verre: 'glass', papier: 'paper', biodechets: 'organics' };
 /* internal state → CSS class (French class names kept so existing card-mod styles still apply) */
 const STATE_CLASS = { eve: 'veille', today: 'jour', emptied: 'videe', unknown: '', '': '' };
