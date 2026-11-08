@@ -11,8 +11,6 @@
 ![commit activity](https://img.shields.io/github/commit-activity/y/skyrotter/ha-poubelle-card?style=flat-square)
 ![license](https://img.shields.io/github/license/skyrotter/ha-poubelle-card?style=flat-square)
 
-This is a fork of the original project with the addition of the Italian translation
-
 Animated Lovelace card for bin collection days: the bin fills up over the cycle, shakes the evening before pickup, hops on pickup day and sparkles once emptied.
 
 ![Preview](https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/main/images/en/preview.gif)
