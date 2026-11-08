@@ -5,8 +5,9 @@ import en from './lang/en.json';
 import fr from './lang/fr.json';
 import sr from './lang/sr.json';
 import srLatn from './lang/sr-Latn.json';
+import it from './lang/it.json';
 
-export const LANGS = { en, fr, sr, 'sr-Latn': srLatn };
+export const LANGS = { en, fr, it, sr, 'sr-Latn': srLatn };
 export const DEFAULT_LANG = 'en';
 
 /* The HA user's language (profile setting), falling back to the browser. */
