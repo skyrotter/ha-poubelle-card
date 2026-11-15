@@ -1,4 +1,4 @@
-/*! poubelle-card v2.0.1 | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */
+/*! poubelle-card v2.0.0 | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */
 
 // src/assets.js
 var PB_IMG = {

@@ -1,6 +1,6 @@
 # 🗑️ Poubelle Card
 
-[Français](README.md) · **English**
+[Français](README.md) · **English** · [Italiano](README.it.md)
 
 ![release](https://img.shields.io/github/v/release/skyrotter/ha-poubelle-card?style=flat-square&color=green)
 ![downloads](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/skyrotter/ha-poubelle-card/badges/downloads.json&style=flat-square)
@@ -31,7 +31,7 @@ Animated Lovelace card for bin collection days: the bin fills up over the cycle,
 - Schedules: weekly, **every N weeks from a start date** (fortnightly, four-weekly…), even/odd weeks, once a month, seasonal months
 - **Public holidays** from the [Holiday](https://www.home-assistant.io/integrations/holiday) integration, **next work day** from the [Workday](https://www.home-assistant.io/integrations/workday) integration
 - Or read the date from an entity: date sensor, days-left sensor, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule)
-- Card and visual editor follow your **Home Assistant language** automatically (English, French, Serbian Cyrillic and Latin; other languages fall back to English)
+- Card and visual editor follow your **Home Assistant language** automatically (English, French, Italian, Dutch, Serbian Cyrillic and Latin; other languages fall back to English)
 - No dependencies, respects `prefers-reduced-motion`
 
 ## 📦 Installation
@@ -260,7 +260,7 @@ cards:
 | `show_meter` | boolean | `true` | Fill meter |
 | `show_status` | boolean | `true` | Text under the bin |
 | `theme_background` | boolean | `false` | Use the HA theme card background |
-| `language` | text | `auto` | `auto` (your HA profile language), `en`, `fr`, `sr`, `sr-Latn` |
+| `language` | text | `auto` | `auto` (your HA profile language), `en`, `fr`, `it`, `nl`, `sr`, `sr-Latn` |
 
 ### Supported entities
 - **Waste Collection Schedule**: `daysTo` attribute
@@ -293,7 +293,7 @@ npm run build     # src/ → dist/poubelle-card.js
 npm run watch     # rebuild on change
 npm run screenshots  # README images in images/<lang>/ (needs Chrome and ffmpeg)
 ```
-Edit files in `src/`, never `dist/` directly; commit the rebuilt `dist/poubelle-card.js` with your change (CI checks it is up to date). **Releasing:** publish a GitHub release with a tag like `v2.1.0`. The tag is the version: the release workflow writes it into the card, builds and attaches `poubelle-card.js` to the release, and commits the new version back to `main`. Nobody edits the version by hand.
+Edit files in `src/`, never `dist/` directly; commit the rebuilt `dist/poubelle-card.js` with your change (CI checks it is up to date). Releases attach `dist/poubelle-card.js` automatically; the release tag must match the version in `package.json`.
 
 ## 📄 Licence
 MIT
