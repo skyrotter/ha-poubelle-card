@@ -3,11 +3,12 @@
  * and add it to LANGS below. Missing keys fall back to English. Day and month names come from Intl. */
 import en from './lang/en.json';
 import fr from './lang/fr.json';
+import it from './lang/it.json';
+import nl from './lang/nl.json';
 import sr from './lang/sr.json';
 import srLatn from './lang/sr-Latn.json';
-import it from './lang/it.json';
 
-export const LANGS = { en, fr, it, sr, 'sr-Latn': srLatn };
+export const LANGS = { en, fr, it, nl, sr, 'sr-Latn': srLatn };
 export const DEFAULT_LANG = 'en';
 
 /* The HA user's language (profile setting), falling back to the browser. */
