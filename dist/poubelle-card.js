@@ -709,7 +709,7 @@ var nl_default = {
   card: {
     bin: { grey: "Grijze container", black: "Zwarte container", yellow: "Gele container", green: "Groene container", blue: "Blauwe container", brown: "Bruine container", red: "Rode container", purple: "Paarse container", burgundy: "Bordeauxrode container", lime: "Limoengroene container" },
     bag: { grey: "Grijze zak", black: "Zwarte zak", yellow: "Gele zak", green: "Groene zak", blue: "Blauwe zak", brown: "Bruine zak", red: "Rode zak", purple: "Paarse zak", burgundy: "Bordeauxrode zak", lime: "Limoengroene zak" },
-    bulky: "Grof vuil",
+    bulky: "Grofvuil",
     emptied: "Geleegd",
     emptied_txt: "Vandaag geleegd ✅",
     today: "Ophaaldag",
@@ -746,7 +746,7 @@ var nl_default = {
       workday_calendar: "Werkdagenkalender",
       hour: "Ophaaltijd",
       interval: "Dagen tussen ophaaldagen",
-      scale: "Grootte",
+      scale: "Schaal",
       headroom: "Bovenmarge",
       compact: "Compact",
       show_meter: "Vulmeter",
@@ -759,7 +759,7 @@ var nl_default = {
       entity: "Sensor, kalender of input_datetime met de volgende ophaaldag. Laat leeg om het onderstaande schema te gebruiken.",
       start_date: "Een willekeurige datum waarop de container is of wordt opgehaald. De ophaaldagen herhalen zich elke N weken vanaf deze datum.",
       every: "1 = wekelijks, 2 = tweewekelijks, 4 = om de vier weken. Vereist een startdatum.",
-      weeks: "Pariteit van het ISO-weeknummer. Wordt genegeerd als er een startdatum is ingesteld.",
+      weeks: "ISO-weeknummer pariteit. Wordt genegeerd als er een startdatum is ingesteld.",
       holidays: "Wat er gebeurt wanneer een ophaaldag op een feestdag valt.",
       holiday_calendar: "Kalender van de Holiday-integratie. Wordt automatisch gevonden als dit leeg is.",
       workday_calendar: "Kalender van de Workday-integratie, gebruikt door “volgende werkdag”. Wordt automatisch gevonden als dit leeg is.",
@@ -770,7 +770,7 @@ var nl_default = {
       container: {
         wheelie_bin: "Rolcontainer",
         bag: "Vuilniszak",
-        bulky: "Grof vuil"
+        bulky: "Grofvuil"
       },
       weeks: {
         all: "Elke week",
