@@ -1,4 +1,4 @@
-/*! poubelle-card v2.0.1 | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */
+/*! poubelle-card v2.0.0 | https://github.com/skyrotter/ha-poubelle-card | MIT | built from src/ — edit there, not here */
 
 // src/assets.js
 var PB_IMG = {
@@ -599,6 +599,214 @@ var fr_default = {
   }
 };
 
+// src/lang/it.json
+var it_default = {
+  language_name: "Italiano",
+  card: {
+    bin: { grey: "Bidone grigio", black: "Bidone nero", yellow: "Bidone giallo", green: "Bidone verde", blue: "Bidone blu", brown: "Bidone marrone", red: "Bidone rosso", purple: "Bidone viola", burgundy: "Bidone bordeaux", lime: "Bidone verde lime" },
+    bag: { grey: "Sacco grigio", black: "Sacco nero", yellow: "Sacco giallo", green: "Sacco verde", blue: "Sacco blu", brown: "Sacco marrone", red: "Sacco rosso", purple: "Sacco viola", burgundy: "Sacco bordeaux", lime: "Sacco verde lime" },
+    bulky: "Ingombranti",
+    emptied: "Svuotato",
+    emptied_txt: "Svuotato oggi ✅",
+    today: "Ritiro",
+    today_txt: "Ritiro oggi 🚛",
+    eve: "Stasera",
+    eve_txt: "Da esporre stasera! 🌙",
+    in_days: "Tra {n} g",
+    next_weekday: "Ritiro {day}",
+    next_date: "Ritiro il {date}",
+    fill: "Livello di riempimento",
+    unknown: "Data sconosciuta",
+    moved: "spostato (giorno festivo)",
+    warn_no_holiday_calendar: "Nessun calendario dei giorni festivi trovato: aggiungi l'integrazione Holiday",
+    warn_no_workday_calendar: "Nessun calendario dei giorni lavorativi trovato: aggiungi l'integrazione Workday"
+  },
+  editor: {
+    labels: {
+      bin: "Colore",
+      name: "Nome",
+      container: "Tipo",
+      image: "Immagine personalizzata (sostituisce il disegno)",
+      entity: "Entità (facoltativa)",
+      calendar_filter: "Filtro calendario (il titolo contiene)",
+      calendar_offset: "Scostamento calendario (giorni)",
+      days: "Giorni di ritiro",
+      start_date: "Data di inizio (un ritiro noto)",
+      every: "Ogni N settimane",
+      weeks: "Settimane",
+      month_week: "Una volta al mese",
+      month_day: "Giorno del mese (1–31)",
+      months: "Mesi di ritiro (vuoto = tutto l'anno)",
+      holidays: "Giorni festivi",
+      holiday_calendar: "Calendario dei giorni festivi",
+      workday_calendar: "Calendario dei giorni lavorativi",
+      hour: "Ora di passaggio",
+      interval: "Giorni tra due ritiri",
+      scale: "Dimensione",
+      headroom: "Margine superiore",
+      compact: "Compatto",
+      show_meter: "Indicatore di riempimento",
+      show_status: "Testo di stato",
+      theme_background: "Sfondo del tema HA",
+      full_color: "Bidone interamente colorato",
+      language: "Lingua"
+    },
+    helpers: {
+      entity: "Sensore, calendario o input_datetime con il prossimo ritiro. Lascia vuoto per usare la pianificazione qui sotto.",
+      start_date: "Una qualsiasi data in cui il bidone è stato o sarà ritirato. I ritiri si ripetono ogni N settimane a partire da essa.",
+      every: "1 = ogni settimana, 2 = una settimana su due, 4 = ogni quattro settimane. Richiede una data di inizio.",
+      weeks: "Parità della settimana ISO. Ignorato se è impostata una data di inizio.",
+      holidays: "Cosa succede quando un ritiro cade in un giorno festivo.",
+      holiday_calendar: "Calendario dell'integrazione Holiday. Se vuoto, viene trovato automaticamente.",
+      workday_calendar: "Calendario dell'integrazione Workday, usato da «giorno lavorativo successivo». Se vuoto, viene trovato automaticamente.",
+      hour: "Ora in cui passa il camion; dopo, il bidone appare svuotato.",
+      interval: "Usato solo con un sensore, per stimare il livello di riempimento."
+    },
+    options: {
+      container: {
+        wheelie_bin: "Bidone carrellato",
+        bag: "Sacco dei rifiuti",
+        bulky: "Rifiuti ingombranti"
+      },
+      weeks: {
+        all: "Ogni settimana",
+        even: "Settimane pari",
+        odd: "Settimane dispari"
+      },
+      month_week: {
+        "": "Ogni settimana",
+        "1": "1ª settimana del mese",
+        "2": "2ª settimana del mese",
+        "3": "3ª settimana del mese",
+        "4": "4ª settimana del mese",
+        last: "Ultima settimana del mese"
+      },
+      holidays: {
+        none: "Ignora i giorni festivi",
+        next_day: "Spostato al giorno dopo",
+        next_work_day: "Spostato al giorno lavorativo successivo",
+        shift_week: "Spostato alla settimana successiva",
+        shift_rest_of_week: "Slittamento di un giorno fino a fine settimana",
+        cancel: "Annullato"
+      },
+      language: {
+        auto: "Automatico (lingua di Home Assistant)"
+      }
+    }
+  },
+  errors: {
+    bin_required: "Imposta «bin» ({bins})",
+    bin_unknown: "Bidone «{bin}» sconosciuto (usa {bins})",
+    schedule_required: "Imposta «days» (es. [1, 4]), «start_date», «month_day» o «entity»",
+    start_date_invalid: "«start_date» deve essere una data come 2026-11-04",
+    holidays_unknown: "Valore «{value}» sconosciuto per «holidays» (usa {values})"
+  }
+};
+
+// src/lang/nl.json
+var nl_default = {
+  language_name: "Nederlands",
+  card: {
+    bin: { grey: "Grijze container", black: "Zwarte container", yellow: "Gele container", green: "Groene container", blue: "Blauwe container", brown: "Bruine container", red: "Rode container", purple: "Paarse container", burgundy: "Bordeauxrode container", lime: "Limoengroene container" },
+    bag: { grey: "Grijze zak", black: "Zwarte zak", yellow: "Gele zak", green: "Groene zak", blue: "Blauwe zak", brown: "Bruine zak", red: "Rode zak", purple: "Paarse zak", burgundy: "Bordeauxrode zak", lime: "Limoengroene zak" },
+    bulky: "Grofvuil",
+    emptied: "Geleegd",
+    emptied_txt: "Vandaag geleegd ✅",
+    today: "Ophaaldag",
+    today_txt: "Vandaag ophaaldag 🚛",
+    eve: "Vanavond",
+    eve_txt: "Zet hem vanavond buiten! 🌙",
+    in_days: "Over {n} d",
+    next_weekday: "Ophalen op {day}",
+    next_date: "Ophalen op {date}",
+    fill: "Vulniveau",
+    unknown: "Onbekende datum",
+    moved: "verplaatst (feestdag)",
+    warn_no_holiday_calendar: "Geen feestdagenkalender gevonden: voeg de Holiday-integratie toe",
+    warn_no_workday_calendar: "Geen werkdagenkalender gevonden: voeg de Workday-integratie toe"
+  },
+  editor: {
+    labels: {
+      bin: "Kleur",
+      name: "Naam",
+      container: "Type",
+      image: "Eigen afbeelding (vervangt de tekening)",
+      entity: "Entiteit (optioneel)",
+      calendar_filter: "Kalenderfilter (titel bevat)",
+      calendar_offset: "Kalenderverschuiving (dagen)",
+      days: "Ophaaldagen",
+      start_date: "Startdatum (een bekende ophaaldag)",
+      every: "Elke N weken",
+      weeks: "Weken",
+      month_week: "Eén keer per maand",
+      month_day: "Dag van de maand (1–31)",
+      months: "Ophaalmaanden (leeg = hele jaar)",
+      holidays: "Feestdagen",
+      holiday_calendar: "Feestdagenkalender",
+      workday_calendar: "Werkdagenkalender",
+      hour: "Ophaaltijd",
+      interval: "Dagen tussen ophaaldagen",
+      scale: "Schaal",
+      headroom: "Bovenmarge",
+      compact: "Compact",
+      show_meter: "Vulmeter",
+      show_status: "Statustekst",
+      theme_background: "Achtergrond van HA-thema",
+      full_color: "Volledig gekleurde container",
+      language: "Taal"
+    },
+    helpers: {
+      entity: "Sensor, kalender of input_datetime met de volgende ophaaldag. Laat leeg om het onderstaande schema te gebruiken.",
+      start_date: "Een willekeurige datum waarop de container is of wordt opgehaald. De ophaaldagen herhalen zich elke N weken vanaf deze datum.",
+      every: "1 = wekelijks, 2 = tweewekelijks, 4 = om de vier weken. Vereist een startdatum.",
+      weeks: "ISO-weeknummer pariteit. Wordt genegeerd als er een startdatum is ingesteld.",
+      holidays: "Wat er gebeurt wanneer een ophaaldag op een feestdag valt.",
+      holiday_calendar: "Kalender van de Holiday-integratie. Wordt automatisch gevonden als dit leeg is.",
+      workday_calendar: "Kalender van de Workday-integratie, gebruikt door “volgende werkdag”. Wordt automatisch gevonden als dit leeg is.",
+      hour: "Tijdstip waarop de vuilniswagen komt; daarna wordt de container als geleegd weergegeven.",
+      interval: "Alleen gebruikt met een sensor-entiteit, om het vulniveau te schatten."
+    },
+    options: {
+      container: {
+        wheelie_bin: "Rolcontainer",
+        bag: "Vuilniszak",
+        bulky: "Grofvuil"
+      },
+      weeks: {
+        all: "Elke week",
+        even: "Even weken",
+        odd: "Oneven weken"
+      },
+      month_week: {
+        "": "Elke week",
+        "1": "1e week van de maand",
+        "2": "2e week van de maand",
+        "3": "3e week van de maand",
+        "4": "4e week van de maand",
+        last: "Laatste week van de maand"
+      },
+      holidays: {
+        none: "Feestdagen negeren",
+        next_day: "Verplaatsen naar de volgende dag",
+        next_work_day: "Verplaatsen naar de volgende werkdag",
+        shift_week: "Doorschuiven naar de volgende week",
+        shift_rest_of_week: "Rest van de week schuift +1 dag op",
+        cancel: "Vervalt"
+      },
+      language: {
+        auto: "Automatisch (taal van Home Assistant)"
+      }
+    }
+  },
+  errors: {
+    bin_required: "Stel “bin” in ({bins})",
+    bin_unknown: "Onbekende container “{bin}” (gebruik {bins})",
+    schedule_required: "Stel “days” in (bijv. [1, 4]), “start_date”, “month_day” of “entity”",
+    start_date_invalid: "“start_date” moet een datum zijn zoals 2026-11-04",
+    holidays_unknown: "Onbekende waarde “{value}” voor “holidays” (gebruik {values})"
+  }
+};
+
 // src/lang/sr.json
 var sr_default = {
   language_name: "Српски",
@@ -829,112 +1037,8 @@ var sr_Latn_default = {
   }
 };
 
-// src/lang/it.json
-var it_default = {
-  language_name: "Italiano",
-  card: {
-    bin: { grey: "Bidone grigio", black: "Bidone nero", yellow: "Bidone giallo", green: "Bidone verde", blue: "Bidone blu", brown: "Bidone marrone", red: "Bidone rosso", purple: "Bidone viola", burgundy: "Bidone bordeaux", lime: "Bidone verde lime" },
-    bag: { grey: "Sacco grigio", black: "Sacco nero", yellow: "Sacco giallo", green: "Sacco verde", blue: "Sacco blu", brown: "Sacco marrone", red: "Sacco rosso", purple: "Sacco viola", burgundy: "Sacco bordeaux", lime: "Sacco verde lime" },
-    bulky: "Ingombranti",
-    emptied: "Svuotato",
-    emptied_txt: "Svuotato oggi ✅",
-    today: "Ritiro",
-    today_txt: "Ritiro oggi 🚛",
-    eve: "Stasera",
-    eve_txt: "Da esporre stasera! 🌙",
-    in_days: "Tra {n} g",
-    next_weekday: "Ritiro {day}",
-    next_date: "Ritiro il {date}",
-    fill: "Livello di riempimento",
-    unknown: "Data sconosciuta",
-    moved: "spostato (giorno festivo)",
-    warn_no_holiday_calendar: "Nessun calendario dei giorni festivi trovato: aggiungi l'integrazione Holiday",
-    warn_no_workday_calendar: "Nessun calendario dei giorni lavorativi trovato: aggiungi l'integrazione Workday"
-  },
-  editor: {
-    labels: {
-      bin: "Colore",
-      name: "Nome",
-      container: "Tipo",
-      image: "Immagine personalizzata (sostituisce il disegno)",
-      entity: "Entità (facoltativa)",
-      calendar_filter: "Filtro calendario (il titolo contiene)",
-      calendar_offset: "Scostamento calendario (giorni)",
-      days: "Giorni di ritiro",
-      start_date: "Data di inizio (un ritiro noto)",
-      every: "Ogni N settimane",
-      weeks: "Settimane",
-      month_week: "Una volta al mese",
-      month_day: "Giorno del mese (1–31)",
-      months: "Mesi di ritiro (vuoto = tutto l'anno)",
-      holidays: "Giorni festivi",
-      holiday_calendar: "Calendario dei giorni festivi",
-      workday_calendar: "Calendario dei giorni lavorativi",
-      hour: "Ora di passaggio",
-      interval: "Giorni tra due ritiri",
-      scale: "Dimensione",
-      headroom: "Margine superiore",
-      compact: "Compatto",
-      show_meter: "Indicatore di riempimento",
-      show_status: "Testo di stato",
-      theme_background: "Sfondo del tema HA",
-      full_color: "Bidone interamente colorato",
-      language: "Lingua"
-    },
-    helpers: {
-      entity: "Sensore, calendario o input_datetime con il prossimo ritiro. Lascia vuoto per usare la pianificazione qui sotto.",
-      start_date: "Una qualsiasi data in cui il bidone è stato o sarà ritirato. I ritiri si ripetono ogni N settimane a partire da essa.",
-      every: "1 = ogni settimana, 2 = una settimana su due, 4 = ogni quattro settimane. Richiede una data di inizio.",
-      weeks: "Parità della settimana ISO. Ignorato se è impostata una data di inizio.",
-      holidays: "Cosa succede quando un ritiro cade in un giorno festivo.",
-      holiday_calendar: "Calendario dell'integrazione Holiday. Se vuoto, viene trovato automaticamente.",
-      workday_calendar: "Calendario dell'integrazione Workday, usato da «giorno lavorativo successivo». Se vuoto, viene trovato automaticamente.",
-      hour: "Ora in cui passa il camion; dopo, il bidone appare svuotato.",
-      interval: "Usato solo con un sensore, per stimare il livello di riempimento."
-    },
-    options: {
-      container: {
-        wheelie_bin: "Bidone carrellato",
-        bag: "Sacco dei rifiuti",
-        bulky: "Rifiuti ingombranti"
-      },
-      weeks: {
-        all: "Ogni settimana",
-        even: "Settimane pari",
-        odd: "Settimane dispari"
-      },
-      month_week: {
-        "": "Ogni settimana",
-        "1": "1ª settimana del mese",
-        "2": "2ª settimana del mese",
-        "3": "3ª settimana del mese",
-        "4": "4ª settimana del mese",
-        last: "Ultima settimana del mese"
-      },
-      holidays: {
-        none: "Ignora i giorni festivi",
-        next_day: "Spostato al giorno dopo",
-        next_work_day: "Spostato al giorno lavorativo successivo",
-        shift_week: "Spostato alla settimana successiva",
-        shift_rest_of_week: "Slittamento di un giorno fino a fine settimana",
-        cancel: "Annullato"
-      },
-      language: {
-        auto: "Automatico (lingua di Home Assistant)"
-      }
-    }
-  },
-  errors: {
-    bin_required: "Imposta «bin» ({bins})",
-    bin_unknown: "Bidone «{bin}» sconosciuto (usa {bins})",
-    schedule_required: "Imposta «days» (es. [1, 4]), «start_date», «month_day» o «entity»",
-    start_date_invalid: "«start_date» deve essere una data come 2026-11-04",
-    holidays_unknown: "Valore «{value}» sconosciuto per «holidays» (usa {values})"
-  }
-};
-
 // src/localize.js
-var LANGS = { en: en_default, fr: fr_default, it: it_default, sr: sr_default, "sr-Latn": sr_Latn_default };
+var LANGS = { en: en_default, fr: fr_default, it: it_default, nl: nl_default, sr: sr_default, "sr-Latn": sr_Latn_default };
 var DEFAULT_LANG = "en";
 function haLanguage(hass) {
   const h = hass || document.querySelector("home-assistant")?.hass;
