@@ -705,20 +705,20 @@ var it_default = {
 
 // src/lang/nl.json
 var nl_default = {
-  language_name: "Dutch",
+  language_name: "Nederlands",
   card: {
     bin: { grey: "Grijze container", black: "Zwarte container", yellow: "Gele container", green: "Groene container", blue: "Blauwe container", brown: "Bruine container", red: "Rode container", purple: "Paarse container", burgundy: "Bordeauxrode container", lime: "Limoengroene container" },
     bag: { grey: "Grijze zak", black: "Zwarte zak", yellow: "Gele zak", green: "Groene zak", blue: "Blauwe zak", brown: "Bruine zak", red: "Rode zak", purple: "Paarse zak", burgundy: "Bordeauxrode zak", lime: "Limoengroene zak" },
     bulky: "Grof vuil",
     emptied: "Geleegd",
     emptied_txt: "Vandaag geleegd ✅",
-    today: "Ophaling",
-    today_txt: "Ophaling vandaag 🚛",
+    today: "Ophaaldag",
+    today_txt: "Vandaag ophaaldag 🚛",
     eve: "Vanavond",
     eve_txt: "Zet hem vanavond buiten! 🌙",
     in_days: "Over {n} d",
-    next_weekday: "Ophaling op {day}",
-    next_date: "Ophaling op {date}",
+    next_weekday: "Ophalen op {day}",
+    next_date: "Ophalen op {date}",
     fill: "Vulniveau",
     unknown: "Onbekende datum",
     moved: "verplaatst (feestdag)",
@@ -735,7 +735,7 @@ var nl_default = {
       calendar_filter: "Kalenderfilter (titel bevat)",
       calendar_offset: "Kalenderverschuiving (dagen)",
       days: "Ophaaldagen",
-      start_date: "Startdatum (een bekende ophaling)",
+      start_date: "Startdatum (een bekende ophaaldag)",
       every: "Elke N weken",
       weeks: "Weken",
       month_week: "Eén keer per maand",
@@ -745,7 +745,7 @@ var nl_default = {
       holiday_calendar: "Feestdagenkalender",
       workday_calendar: "Werkdagenkalender",
       hour: "Ophaaltijd",
-      interval: "Dagen tussen ophalingen",
+      interval: "Dagen tussen ophaaldagen",
       scale: "Grootte",
       headroom: "Bovenmarge",
       compact: "Compact",
@@ -756,11 +756,11 @@ var nl_default = {
       language: "Taal"
     },
     helpers: {
-      entity: "Sensor, kalender of input_datetime met de volgende ophaling. Laat leeg om het onderstaande schema te gebruiken.",
-      start_date: "Een willekeurige datum waarop de container is of wordt opgehaald. De ophalingen herhalen zich elke N weken vanaf deze datum.",
+      entity: "Sensor, kalender of input_datetime met de volgende ophaaldag. Laat leeg om het onderstaande schema te gebruiken.",
+      start_date: "Een willekeurige datum waarop de container is of wordt opgehaald. De ophaaldagen herhalen zich elke N weken vanaf deze datum.",
       every: "1 = wekelijks, 2 = tweewekelijks, 4 = om de vier weken. Vereist een startdatum.",
       weeks: "Pariteit van het ISO-weeknummer. Wordt genegeerd als er een startdatum is ingesteld.",
-      holidays: "Wat er gebeurt wanneer een ophaling op een feestdag valt.",
+      holidays: "Wat er gebeurt wanneer een ophaaldag op een feestdag valt.",
       holiday_calendar: "Kalender van de Holiday-integratie. Wordt automatisch gevonden als dit leeg is.",
       workday_calendar: "Kalender van de Workday-integratie, gebruikt door “volgende werkdag”. Wordt automatisch gevonden als dit leeg is.",
       hour: "Tijdstip waarop de vuilniswagen komt; daarna wordt de container als geleegd weergegeven.",
@@ -779,11 +779,11 @@ var nl_default = {
       },
       month_week: {
         "": "Elke week",
-        "1": "1e van de maand",
-        "2": "2e van de maand",
-        "3": "3e van de maand",
-        "4": "4e van de maand",
-        last: "Laatste van de maand"
+        "1": "1e week van de maand",
+        "2": "2e week van de maand",
+        "3": "3e week van de maand",
+        "4": "4e week van de maand",
+        last: "Laatste week van de maand"
       },
       holidays: {
         none: "Feestdagen negeren",
@@ -791,7 +791,7 @@ var nl_default = {
         next_work_day: "Verplaatsen naar de volgende werkdag",
         shift_week: "Doorschuiven naar de volgende week",
         shift_rest_of_week: "Rest van de week schuift +1 dag op",
-        cancel: "Geannuleerd"
+        cancel: "Vervalt"
       },
       language: {
         auto: "Automatisch (taal van Home Assistant)"
