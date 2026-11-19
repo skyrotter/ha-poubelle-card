@@ -31,7 +31,7 @@ Animated Lovelace card for bin collection days: the bin fills up over the cycle,
 - Schedules: weekly, **every N weeks from a start date** (fortnightly, four-weekly…), even/odd weeks, once a month, seasonal months
 - **Public holidays** from the [Holiday](https://www.home-assistant.io/integrations/holiday) integration, **next work day** from the [Workday](https://www.home-assistant.io/integrations/workday) integration
 - Or read the date from an entity: date sensor, days-left sensor, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule)
-- Card and visual editor follow your **Home Assistant language** automatically (English, French, Serbian Cyrillic and Latin; other languages fall back to English)
+- Card and visual editor follow your **Home Assistant language** automatically (English, French, Spanish, Serbian Cyrillic and Latin; other languages fall back to English)
 - No dependencies, respects `prefers-reduced-motion`
 
 ## 📦 Installation
@@ -260,7 +260,7 @@ cards:
 | `show_meter` | boolean | `true` | Fill meter |
 | `show_status` | boolean | `true` | Text under the bin |
 | `theme_background` | boolean | `false` | Use the HA theme card background |
-| `language` | text | `auto` | `auto` (your HA profile language), `en`, `fr`, `sr`, `sr-Latn` |
+| `language` | text | `auto` | `auto` (your HA profile language), `en`, `es`, `fr`, `sr`, `sr-Latn` |
 
 ### Supported entities
 - **Waste Collection Schedule**: `daysTo` attribute
