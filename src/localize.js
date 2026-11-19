@@ -2,12 +2,13 @@
  * To add a language: copy en.json to <code>.json (HA language code, e.g. de, pt-BR), translate the values,
  * and add it to LANGS below. Missing keys fall back to English. Day and month names come from Intl. */
 import en from './lang/en.json';
+import es from './lang/es.json';
 import fr from './lang/fr.json';
 import sr from './lang/sr.json';
 import srLatn from './lang/sr-Latn.json';
 import it from './lang/it.json';
 
-export const LANGS = { en, fr, it, sr, 'sr-Latn': srLatn };
+export const LANGS = { en, es, fr, it, sr, 'sr-Latn': srLatn };
 export const DEFAULT_LANG = 'en';
 
 /* The HA user's language (profile setting), falling back to the browser. */

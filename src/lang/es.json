@@ -1,0 +1,102 @@
+{
+  "language_name": "Español",
+  "card": {
+    "bin": { "grey": "Cubo gris", "black": "Cubo negro", "yellow": "Cubo amarillo", "green": "Cubo verde", "blue": "Cubo azul", "brown": "Cubo marrón", "red": "Cubo rojo", "purple": "Cubo morado", "burgundy": "Cubo granate", "lime": "Cubo verde lima" },
+    "bag": { "grey": "Bolsa gris", "black": "Bolsa negra", "yellow": "Bolsa amarilla", "green": "Bolsa verde", "blue": "Bolsa azul", "brown": "Bolsa marrón", "red": "Bolsa roja", "purple": "Bolsa morada", "burgundy": "Bolsa granate", "lime": "Bolsa verde lima" },
+    "bulky": "Voluminosos",
+    "emptied": "Vaciado",
+    "emptied_txt": "Vaciado hoy ✅",
+    "today": "Recogida",
+    "today_txt": "Recogida hoy 🚛",
+    "eve": "Esta noche",
+    "eve_txt": "¡Sácalo esta noche! 🌙",
+    "in_days": "En {n} d",
+    "next_weekday": "Recogida el {day}",
+    "next_date": "Recogida el {date}",
+    "fill": "Llenado",
+    "unknown": "Fecha desconocida",
+    "moved": "trasladada (festivo)",
+    "warn_no_holiday_calendar": "No se ha encontrado ningún calendario de festivos: añade la integración Holiday",
+    "warn_no_workday_calendar": "No se ha encontrado ningún calendario de días laborables: añade la integración Workday"
+  },
+  "editor": {
+    "labels": {
+      "bin": "Color",
+      "name": "Nombre",
+      "container": "Tipo",
+      "image": "Imagen personalizada (sustituye al dibujo)",
+      "entity": "Entidad (opcional)",
+      "calendar_filter": "Filtro de calendario (el título contiene)",
+      "calendar_offset": "Desfase del calendario (días)",
+      "days": "Días de recogida",
+      "start_date": "Fecha de inicio (una recogida conocida)",
+      "every": "Cada N semanas",
+      "weeks": "Semanas",
+      "month_week": "Una vez al mes",
+      "month_day": "Día del mes (1–31)",
+      "months": "Meses de recogida (vacío = todo el año)",
+      "holidays": "Festivos",
+      "holiday_calendar": "Calendario de festivos",
+      "workday_calendar": "Calendario de días laborables",
+      "hour": "Hora de recogida",
+      "interval": "Días entre recogidas",
+      "scale": "Tamaño",
+      "headroom": "Margen superior",
+      "compact": "Compacto",
+      "show_meter": "Indicador de llenado",
+      "show_status": "Texto de estado",
+      "theme_background": "Fondo del tema de HA",
+      "full_color": "Cubo totalmente coloreado",
+      "language": "Idioma"
+    },
+    "helpers": {
+      "entity": "Sensor, calendario o input_datetime que indica la próxima recogida. Déjalo vacío para usar la programación de abajo.",
+      "start_date": "Cualquier fecha en la que se recogió o se recogerá el cubo. Las recogidas se repiten cada N semanas a partir de ella.",
+      "every": "1 = cada semana, 2 = cada dos semanas, 4 = cada cuatro semanas. Requiere una fecha de inicio.",
+      "weeks": "Paridad de la semana ISO. Se ignora si hay una fecha de inicio.",
+      "holidays": "Qué pasa cuando una recogida cae en festivo.",
+      "holiday_calendar": "Calendario de la integración Holiday. Se detecta automáticamente si se deja vacío.",
+      "workday_calendar": "Calendario de la integración Workday, usado por «siguiente día laborable». Se detecta automáticamente si se deja vacío.",
+      "hour": "Hora a la que pasa el camión; después, el cubo aparece como vaciado.",
+      "interval": "Solo se usa con una entidad de sensor, para estimar el nivel de llenado."
+    },
+    "options": {
+      "container": {
+        "wheelie_bin": "Cubo con ruedas",
+        "bag": "Bolsa de basura",
+        "bulky": "Voluminosos"
+      },
+      "weeks": {
+        "all": "Todas las semanas",
+        "even": "Semanas pares",
+        "odd": "Semanas impares"
+      },
+      "month_week": {
+        "": "Todas las semanas",
+        "1": "1.º del mes",
+        "2": "2.º del mes",
+        "3": "3.º del mes",
+        "4": "4.º del mes",
+        "last": "Último del mes"
+      },
+      "holidays": {
+        "none": "Ignorar festivos",
+        "next_day": "Pasar al día siguiente",
+        "next_work_day": "Pasar al siguiente día laborable",
+        "shift_week": "Pasar a la semana siguiente",
+        "shift_rest_of_week": "El resto de la semana se retrasa 1 día",
+        "cancel": "Recogida cancelada"
+      },
+      "language": {
+        "auto": "Automático (idioma de Home Assistant)"
+      }
+    }
+  },
+  "errors": {
+    "bin_required": "Indica «bin» ({bins})",
+    "bin_unknown": "Cubo «{bin}» desconocido (usa {bins})",
+    "schedule_required": "Indica «days» (p. ej., [1, 4]), «start_date», «month_day» o «entity»",
+    "start_date_invalid": "«start_date» debe ser una fecha como 2026-11-04",
+    "holidays_unknown": "Valor «{value}» desconocido para «holidays» (usa {values})"
+  }
+}

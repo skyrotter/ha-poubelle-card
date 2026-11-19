@@ -31,7 +31,7 @@ Carte Lovelace animée pour Home Assistant : la poubelle se remplit au fil des j
 - Plannings : chaque semaine, **toutes les N semaines à partir d'une date**, semaines paires / impaires, une fois par mois, collectes saisonnières
 - **Jours fériés** via l'intégration [Holiday](https://www.home-assistant.io/integrations/holiday), **jour ouvré suivant** via l'intégration [Workday](https://www.home-assistant.io/integrations/workday)
 - Ou une entité : capteur date, nombre de jours, `calendar`, [Waste Collection Schedule](https://github.com/mampfes/hacs_waste_collection_schedule)
-- Carte et éditeur visuel dans la **langue de Home Assistant** automatiquement (anglais, français, serbe cyrillique et latin ; les autres langues passent en anglais)
+- Carte et éditeur visuel dans la **langue de Home Assistant** automatiquement (anglais, français, espagnol, serbe cyrillique et latin ; les autres langues passent en anglais)
 - Aucune dépendance, respecte `prefers-reduced-motion`
 
 ## 📦 Installation
